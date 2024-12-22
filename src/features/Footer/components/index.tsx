@@ -20,7 +20,7 @@ import { useEffect, useState } from 'react'
 import Link from "next/link"
 import { Logo } from "@/components/Logo"
 // noinspection JSDeprecatedSymbols
-import { Facebook, Mail, Twitter, Github, Youtube, Gitlab, Triangle } from 'lucide-react'
+import { Mail, Twitter, Github, Youtube, Gitlab, Triangle } from 'lucide-react'
 
 const baseClasses = "flex items-center gap-x-1 text-sm/6 font-semibold transition-all duration-200 ease-in-out group";
 const hoverClasses = "hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text";
@@ -57,31 +57,27 @@ export default function Footer() {
                                 I do cool nerdy stuff! よい一日を！
                             </p>
                             <div className="mt-6 flex gap-6">
-                                <Link href="https://facebook.com/4934tech" className="group">
-                                    <Facebook className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
-                                    <span className="sr-only">Facebook</span>
-                                </Link>
-                                <Link href="https://twitter.com/4934tech" className="group">
+                                <Link href="https://twitter.com/olavorw" className="group">
                                     <Twitter className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
-                                    <span className="sr-only">Twitter</span>
+                                    <span className="sr-only">X</span>
                                 </Link>
-                                <Link href="https://4934tech/4934tech" className="group">
+                                <Link href="https://github.com/olavorw" className="group">
                                     <Github className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">GitHub</span>
                                 </Link>
-                                <Link href="https://youtube.com/@4934tech" className="group">
+                                <Link href="https://youtube.com/@olavorw" className="group">
                                     <Youtube className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">YouTube</span>
                                 </Link>
-                                <Link href="mailto:4934@4934.tech" className="group">
+                                <Link href="mailto:olav@olavorw.com" className="group">
                                     <Mail className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">Email</span>
                                 </Link>
-                                <Link href={"https://gitlab.com/4934"} className={"group"}>
+                                <Link href={"https://gitlab.com/olavorw"} className={"group"}>
                                     <Gitlab className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">GitLab</span>
                                 </Link>
-                                <Link href={"https://vercel.com/4934/"} className={"group"}>
+                                <Link href={"https://vercel.com/olavorw/"} className={"group"}>
                                     <Triangle className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className={"sr-only"}>Vercel</span>
                                 </Link>
@@ -174,17 +170,17 @@ export default function Footer() {
                             <h3 className="text-sm font-semibold text-white">Legal</h3>
                             <ul className="mt-4 space-y-3">
                                 <li>
-                                    <Link href="https://4934.tech/policies/tos" className={`${baseClasses} ${hoverClasses} text-slate-400`}>
+                                    <Link href="https://olavorw.com/policies/tos" className={`${baseClasses} ${hoverClasses} text-slate-400`}>
                                         Terms of Service
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://4934.tech/policies/privacy" className={`${baseClasses} ${hoverClasses} text-slate-400`}>
+                                    <Link href="https://olavorw.com/policies/privacy" className={`${baseClasses} ${hoverClasses} text-slate-400`}>
                                         Privacy Policy
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://4934.tech/policies/copyright" className={`${baseClasses} ${hoverClasses} text-slate-400`}>
+                                    <Link href="https://olavorw.com/policies/copyright" className={`${baseClasses} ${hoverClasses} text-slate-400`}>
                                         Copyright Information
                                     </Link>
                                 </li>
@@ -199,7 +195,7 @@ export default function Footer() {
 
                     {/* Copyright */}
                     <div className="mt-16 border-t border-slate-800 pt-8">
-                        <Link href="https://4934.tech/policies/copyright" className={`${baseClasses} ${hoverClasses} text-sm text-slate-400`}>
+                        <Link href="https://olavorw.com/policies/copyright" className={`${baseClasses} ${hoverClasses} text-sm text-slate-400`}>
                             © {new Date().getFullYear()} 4934 Tech All rights reserved.
                         </Link>
                     </div>
