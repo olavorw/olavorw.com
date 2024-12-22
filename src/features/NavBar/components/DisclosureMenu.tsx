@@ -30,14 +30,14 @@ export function DisclosureMenu({ label, items }: DisclosureMenuProps) {
                 <>
                     <Disclosure.Button className={`group flex w-full items-center justify-between rounded-lg py-2 text-base/7 font-semibold transition-all duration-300 ease-in-out ${
                         open
-                            ? 'text-transparent bg-gradient-to-r from-[#32b7b6] to-[#425389] bg-clip-text'
-                            : 'text-white hover:bg-gray-900/5 hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text'
+                            ? 'text-transparent bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text'
+                            : 'text-white hover:bg-gray-900/5 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text'
                     }`}
                     >
                         {label}
                         <ChevronDownIcon
                             aria-hidden="true"
-                            className={`size-5 flex-none transition-transform duration-300 ease-in-out ${open ? 'rotate-180' : ''} ${open ? 'text-[#32b7b6]' : 'group-hover:text-[#32b7b6]'}`}
+                            className={`size-5 flex-none transition-transform duration-300 ease-in-out ${open ? 'rotate-180' : ''} ${open ? 'text-[#6717cd]' : 'group-hover:text-[#6717cd]'}`}
                         />
                     </Disclosure.Button>
                     <Transition
@@ -53,7 +53,7 @@ export function DisclosureMenu({ label, items }: DisclosureMenuProps) {
                                 <a
                                     key={item.name}
                                     href={item.href}
-                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-white hover:bg-black900/15 hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                    className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-white hover:bg-black900/15 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                 >
                                     {item.name}
                                 </a>
