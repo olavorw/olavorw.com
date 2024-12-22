@@ -23,7 +23,7 @@ import { Logo } from "@/components/Logo"
 import { Facebook, Mail, Twitter, Github, Youtube, Gitlab, Triangle } from 'lucide-react'
 
 const baseClasses = "flex items-center gap-x-1 text-sm/6 font-semibold transition-all duration-200 ease-in-out group";
-const hoverClasses = "hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text";
+const hoverClasses = "hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text";
 
 export default function Footer() {
     const [opacity, setOpacity] = useState(0)
@@ -58,31 +58,31 @@ export default function Footer() {
                             </p>
                             <div className="mt-6 flex gap-6">
                                 <Link href="https://facebook.com/4934tech" className="group">
-                                    <Facebook className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Facebook className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">Facebook</span>
                                 </Link>
                                 <Link href="https://twitter.com/4934tech" className="group">
-                                    <Twitter className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Twitter className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">Twitter</span>
                                 </Link>
                                 <Link href="https://4934tech/4934tech" className="group">
-                                    <Github className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Github className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">GitHub</span>
                                 </Link>
                                 <Link href="https://youtube.com/@4934tech" className="group">
-                                    <Youtube className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Youtube className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">YouTube</span>
                                 </Link>
                                 <Link href="mailto:4934@4934.tech" className="group">
-                                    <Mail className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Mail className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">Email</span>
                                 </Link>
                                 <Link href={"https://gitlab.com/4934"} className={"group"}>
-                                    <Gitlab className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Gitlab className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className="sr-only">GitLab</span>
                                 </Link>
                                 <Link href={"https://vercel.com/4934/"} className={"group"}>
-                                    <Triangle className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]" />
+                                    <Triangle className="h-5 w-5 text-slate-400 transition-colors duration-200 ease-in-out group-hover:text-[#4844e4]" />
                                     <span className={"sr-only"}>Vercel</span>
                                 </Link>
                             </div>
