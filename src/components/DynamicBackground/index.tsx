@@ -103,7 +103,7 @@ export default function DynamicBackground() {
                         shape.x, shape.y, shape.radius
                     )
                     const startColor = shape.color
-                    const endColor = `rgba(50, 183, 182, ${Math.max(0, Math.min(factor * 0.8, 1))})`
+                    const endColor = `rgba(72, 68, 228, ${Math.max(0, Math.min(factor * 0.8, 1))})`
                     gradient.addColorStop(0, startColor)
                     gradient.addColorStop(1, endColor)
                     ctx.fillStyle = gradient

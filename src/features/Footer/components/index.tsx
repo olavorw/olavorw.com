@@ -54,7 +54,7 @@ export default function Footer() {
                                 <Logo />
                             </div>
                             <p className="text-slate-300 text-sm leading-relaxed max-w-xs">
-                                A transparent, open source, friendly community organization for makers.
+                                I do cool nerdy stuff! よい一日を！
                             </p>
                             <div className="mt-6 flex gap-6">
                                 <Link href="https://facebook.com/4934tech" className="group">
