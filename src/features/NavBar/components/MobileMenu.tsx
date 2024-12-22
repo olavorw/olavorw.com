@@ -100,14 +100,14 @@ export function MobileMenu({ isOpen, onClose, solutions, solutionsCTA, hackathon
                                                 <DisclosureMenu label="Solutions" items={solutionsWithCTA}/>
                                                 <a
                                                     href="#"
-                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                                 >
                                                     Gallery
                                                 </a>
                                                 <DisclosureMenu label="Hackathons" items={hackathonsWithCTA}/>
                                                 <a
                                                     href="#"
-                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                                 >
                                                     About
                                                 </a>
@@ -117,7 +117,7 @@ export function MobileMenu({ isOpen, onClose, solutions, solutionsCTA, hackathon
                                         <div className="border-t border-gray-400/50 px-6 py-6">
                                             <a
                                                 href="#"
-                                                className="block rounded-lg py-2.5 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                className="block rounded-lg py-2.5 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                             >
                                                 Log in
                                             </a>
