@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Azeret_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import NavBar from "@/features/NavBar/components";
 import DynamicBackground from "@/components/DynamicBackground";
 import Footer from "@/features/Footer/components";
