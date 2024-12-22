@@ -16,51 +16,75 @@ limitations under the License.
 
 'use client'
 
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
 
-interface Shape {
+interface Node {
     x: number
     y: number
-    radius: number
-    color: string
-    vx: number
-    vy: number
-    originalSpeed: number
-    throwVelocity: { x: number; y: number } | null
+    connections: number[]
 }
 
-const createShape = (width: number, height: number, screenSize: number): Shape => {
-    const sizeMultiplier = Math.min(width, height) / 1000
-    const baseRadius = 50 + Math.random() * 150
-    const radius = baseRadius * sizeMultiplier
+const MIN_GRID_SIZE = 80
+const MAX_GRID_SIZE = 120
+const NODE_RADIUS = 2
+const CONNECTION_DISTANCE_FACTOR = 1.5
+const INTERACTION_RADIUS = 250
 
-    const speedMultiplier = screenSize / 1000
-    const speed = (Math.random() - 0.5) * speedMultiplier
-    return {
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: radius,
-        color: `rgba(${Math.floor(Math.random() * 50 + 50)}, ${Math.floor(Math.random() * 50 + 50)}, ${Math.floor(Math.random() * 50 + 50)}, ${Math.random() * 0.1 + 0.2})`,
-        vx: speed,
-        vy: speed,
-        originalSpeed: Math.abs(speed),
-        throwVelocity: null
-    }
-}
-
-export default function DynamicBackground() {
+export default function CyberBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    const [screenSize, setScreenSize] = useState(0)
-    const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(null)
-    const [prevMousePosition, setPrevMousePosition] = useState<{ x: number; y: number } | null>(null)
-    const [mouseVelocity, setMouseVelocity] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
+    const blurRef = useRef<HTMLDivElement>(null)
+    const animationFrameId = useRef<number | null>(null)
+    const mousePosition = useRef<{ x: number; y: number } | null>(null)
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+    const smoothMousePositionRef = useRef<{ x: number; y: number } | null>(null);
 
-    const shapes = useMemo(() => {
-        const width = typeof window !== 'undefined' ? window.innerWidth : 1920
-        const height = typeof window !== 'undefined' ? window.innerHeight : 1080
-        const size = Math.sqrt(width * height)
-        const shapeCount = Math.max(3, Math.floor(size / 300))
-        return Array.from({ length: shapeCount }, () => createShape(width, height, size))
+    const calculateNodes = useCallback((width: number, height: number) => {
+        const gridSize = Math.max(MIN_GRID_SIZE, Math.min(MAX_GRID_SIZE, Math.floor(Math.sqrt(width * height) / 20)))
+        const connectionDistance = gridSize * CONNECTION_DISTANCE_FACTOR
+
+        const cols = Math.ceil(width / gridSize)
+        const rows = Math.ceil(height / gridSize)
+        const newNodes: Node[] = []
+
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                newNodes.push({
+                    x: i * gridSize,
+                    y: j * gridSize,
+                    connections: [],
+                })
+            }
+        }
+
+        // Calculate connections
+        for (let i = 0; i < newNodes.length; i++) {
+            for (let j = i + 1; j < newNodes.length; j++) {
+                const dx = newNodes[i].x - newNodes[j].x
+                const dy = newNodes[i].y - newNodes[j].y
+                const distance = Math.sqrt(dx * dx + dy * dy)
+                if (distance <= connectionDistance) {
+                    newNodes[i].connections.push(j)
+                    newNodes[j].connections.push(i)
+                }
+            }
+        }
+
+        return newNodes
+    }, [])
+
+    const nodes = useMemo(() => calculateNodes(dimensions.width, dimensions.height), [dimensions, calculateNodes])
+
+    useEffect(() => {
+        const handleResize = () => {
+            setDimensions({ width: window.innerWidth, height: window.innerHeight })
+        }
+
+        handleResize() // Set initial dimensions
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
     }, [])
 
     useEffect(() => {
@@ -70,202 +94,116 @@ export default function DynamicBackground() {
         const ctx = canvas.getContext('2d')
         if (!ctx) return
 
-        let animationFrameId: number
-
-        const updateScreenSize = () => {
-            const width = window.innerWidth
-            const height = window.innerHeight
-            const size = Math.sqrt(width * height)
-            setScreenSize(size)
-            return { width, height, size }
-        }
-
         const resizeCanvas = () => {
-            const { width, height } = updateScreenSize()
-            canvas.width = width
-            canvas.height = height
+            canvas.width = dimensions.width
+            canvas.height = dimensions.height
         }
 
-        const drawShape = (shape: Shape) => {
+        const drawNode = (node: Node, intensity: number, distance: number) => {
             ctx.beginPath()
-            ctx.arc(shape.x, shape.y, shape.radius, 0, Math.PI * 2)
-
-            if (mousePosition) {
-                const dx = mousePosition.x - shape.x
-                const dy = mousePosition.y - shape.y
-                const distance = Math.sqrt(dx * dx + dy * dy)
-                const maxDistance = 300 // Increased interaction range
-
-                if (distance < maxDistance) {
-                    const factor = 1 - distance / maxDistance
-                    const gradient = ctx.createRadialGradient(
-                        shape.x, shape.y, 0,
-                        shape.x, shape.y, shape.radius
-                    )
-                    const startColor = shape.color
-                    const endColor = `rgba(72, 68, 228, ${Math.max(0, Math.min(factor * 0.8, 1))})`
-                    gradient.addColorStop(0, startColor)
-                    gradient.addColorStop(1, endColor)
-                    ctx.fillStyle = gradient
-                } else {
-                    ctx.fillStyle = shape.color
-                }
-            } else {
-                ctx.fillStyle = shape.color
-            }
-
+            ctx.arc(node.x, node.y, NODE_RADIUS, 0, Math.PI * 2)
+            const alpha = Math.max(0, Math.min(1, 1 - distance / INTERACTION_RADIUS))
+            ctx.fillStyle = `rgba(103, 23, 205, ${(0.3 + intensity * 0.7) * alpha})`
             ctx.fill()
         }
 
-        const updateShape = (shape: Shape) => {
-            if (shape.throwVelocity) {
-                shape.x += shape.throwVelocity.x
-                shape.y += shape.throwVelocity.y
-
-                // Slow down the throw velocity
-                shape.throwVelocity.x *= 0.95
-                shape.throwVelocity.y *= 0.95
-
-                // If throw velocity is small enough, reset to original speed
-                if (Math.abs(shape.throwVelocity.x) < shape.originalSpeed && Math.abs(shape.throwVelocity.y) < shape.originalSpeed) {
-                    shape.vx = Math.sign(shape.throwVelocity.x) * shape.originalSpeed
-                    shape.vy = Math.sign(shape.throwVelocity.y) * shape.originalSpeed
-                    shape.throwVelocity = null
-                }
-            } else {
-                shape.x += shape.vx
-                shape.y += shape.vy
-            }
-
-            if (shape.x < -shape.radius) shape.x = canvas.width + shape.radius
-            if (shape.x > canvas.width + shape.radius) shape.x = -shape.radius
-            if (shape.y < -shape.radius) shape.y = canvas.height + shape.radius
-            if (shape.y > canvas.height + shape.radius) shape.y = -shape.radius
-
-            // Mouse interaction
-            if (mousePosition) {
-                const dx = mousePosition.x - shape.x
-                const dy = mousePosition.y - shape.y
-                const distance = Math.sqrt(dx * dx + dy * dy)
-                const mouseSpeed = Math.sqrt(mouseVelocity.x ** 2 + mouseVelocity.y ** 2)
-
-                // Calculate throw threshold based on screen size
-                const throwThreshold = screenSize / 1000 // Increased threshold for harder throwing
-
-                if (distance < 300) { // Keep increased interaction range
-                    if (mouseSpeed > throwThreshold && distance < 100) { // Only throw when very close and moving fast
-                        // Throw the shape away from the mouse
-                        const throwSpeed = (mouseSpeed - throwThreshold) * 0.3 // Reduced throw intensity
-                        shape.throwVelocity = {
-                            x: -dx / distance * throwSpeed,
-                            y: -dy / distance * throwSpeed
-                        }
-                    } else {
-                        // Attract the shape to the mouse more gently
-                        const attractionStrength = 0.0008 // Reduced attraction strength
-                        const attractionFactor = 1 - (distance / 300) // Stronger attraction when closer
-                        shape.vx += dx * attractionStrength * attractionFactor
-                        shape.vy += dy * attractionStrength * attractionFactor
-
-                        // Limit the maximum speed of attraction
-                        const maxSpeed = 3
-                        const currentSpeed = Math.sqrt(shape.vx ** 2 + shape.vy ** 2)
-                        if (currentSpeed > maxSpeed) {
-                            const scale = maxSpeed / currentSpeed
-                            shape.vx *= scale
-                            shape.vy *= scale
-                        }
-                    }
-                }
-            }
+        const drawConnection = (node1: Node, node2: Node, intensity: number, distance: number) => {
+            ctx.beginPath()
+            ctx.moveTo(node1.x, node1.y)
+            ctx.lineTo(node2.x, node2.y)
+            const alpha = Math.max(0, Math.min(1, 1 - distance / INTERACTION_RADIUS))
+            ctx.strokeStyle = `rgba(40, 113, 250, ${intensity * 0.5 * alpha})`
+            ctx.stroke()
         }
 
-        const drawOverlay = () => {
-            const gradient = ctx.createLinearGradient(10, 0, canvas.width, canvas.height)
-            gradient.addColorStop(0, 'rgba(10, 10, 10, 0.3)')
-            gradient.addColorStop(1, 'rgba(20, 20, 20, 0.4)')
-
-            ctx.fillStyle = gradient
-            ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-            // Add subtle frosted lines
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)'
-            ctx.lineWidth = 1
-            for (let i = 0; i < canvas.width; i += 40) {
-                ctx.beginPath()
-                ctx.moveTo(i, 0)
-                ctx.lineTo(i, canvas.height)
-                ctx.stroke()
-            }
-            for (let i = 0; i < canvas.height; i += 40) {
-                ctx.beginPath()
-                ctx.moveTo(0, i)
-                ctx.lineTo(canvas.width, i)
-                ctx.stroke()
-            }
-        }
-
+        let time = 0
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-            shapes.forEach(drawShape)
-            shapes.forEach(updateShape)
+            time += 0.01
 
-            drawOverlay()
+            // Smooth mouse position update
+            if (mousePosition.current) {
+                const targetX = mousePosition.current.x;
+                const targetY = mousePosition.current.y;
+                if (!smoothMousePositionRef.current) {
+                    smoothMousePositionRef.current = { x: targetX, y: targetY };
+                } else {
+                    const newX = smoothMousePositionRef.current.x + (targetX - smoothMousePositionRef.current.x) * 0.1;
+                    const newY = smoothMousePositionRef.current.y + (targetY - smoothMousePositionRef.current.y) * 0.1;
+                    if (Math.abs(newX - smoothMousePositionRef.current.x) > 0.1 || Math.abs(newY - smoothMousePositionRef.current.y) > 0.1) {
+                        smoothMousePositionRef.current = { x: newX, y: newY };
+                    }
+                }
+            }
 
-            animationFrameId = requestAnimationFrame(animate)
+            nodes.forEach((node, index) => {
+                const intensity = (Math.sin(time + index * 0.1) + 1) / 2
+                const distance = smoothMousePositionRef.current
+                    ? Math.sqrt((node.x - smoothMousePositionRef.current.x) ** 2 + (node.y - smoothMousePositionRef.current.y) ** 2)
+                    : Infinity
+
+                node.connections.forEach(connectionIndex => {
+                    drawConnection(node, nodes[connectionIndex], intensity, distance)
+                })
+
+                drawNode(node, intensity, distance)
+            })
+
+            // Update blur div position
+            if (blurRef.current && smoothMousePositionRef.current) {
+                blurRef.current.style.transform = `translate(${smoothMousePositionRef.current.x - INTERACTION_RADIUS}px, ${smoothMousePositionRef.current.y - INTERACTION_RADIUS}px)`
+            }
+
+            animationFrameId.current = requestAnimationFrame(animate)
         }
 
         resizeCanvas()
         animate()
 
-        window.addEventListener('resize', resizeCanvas)
-
-        return () => {
-            window.removeEventListener('resize', resizeCanvas)
-            cancelAnimationFrame(animationFrameId)
+        const handleMouseMove = (event: MouseEvent) => {
+            mousePosition.current = { x: event.clientX, y: event.clientY }
         }
-    }, [shapes, mousePosition, mouseVelocity, screenSize])
 
-    useEffect(() => {
-        const handleGlobalMouseMove = (event: MouseEvent) => {
-            const newMousePosition = { x: event.clientX, y: event.clientY }
-            setMousePosition(newMousePosition)
+        const handleMouseLeave = () => {
+            mousePosition.current = null;
+            smoothMousePositionRef.current = null;
+        }
 
-            if (prevMousePosition) {
-                const dx = newMousePosition.x - prevMousePosition.x
-                const dy = newMousePosition.y - prevMousePosition.y
-                setMouseVelocity({ x: dx, y: dy })
-            }
-
-            setPrevMousePosition(newMousePosition)
-        };
-
-        const handleGlobalMouseLeave = () => {
-            setMousePosition(null)
-            setPrevMousePosition(null)
-            setMouseVelocity({ x: 0, y: 0 })
-        };
-
-        window.addEventListener('mousemove', handleGlobalMouseMove)
-        window.addEventListener('mouseleave', handleGlobalMouseLeave)
+        window.addEventListener('mousemove', handleMouseMove)
+        window.addEventListener('mouseleave', handleMouseLeave)
 
         return () => {
-            window.removeEventListener('mousemove', handleGlobalMouseMove)
-            window.removeEventListener('mouseleave', handleGlobalMouseLeave)
-        };
-    }, [prevMousePosition])
+            window.removeEventListener('mousemove', handleMouseMove)
+            window.removeEventListener('mouseleave', handleMouseLeave)
+            if (animationFrameId.current) {
+                cancelAnimationFrame(animationFrameId.current)
+            }
+        }
+    }, [nodes, dimensions])
 
     return (
-        <canvas
-            ref={canvasRef}
-            className="fixed inset-0 -z-10 pointer-events-none"
-            style={{
-                filter: 'blur(40px)',
-                backdropFilter: 'blur(10px)',
-                backgroundColor: 'rgba(0,0,0,0.7)'
-            }}
-        />
+        <>
+            <canvas
+                ref={canvasRef}
+                className="fixed inset-0 -z-10 pointer-events-none"
+                style={{
+                    backgroundColor: 'rgba(5, 5, 5, 0.9)',
+                }}
+            />
+            <div
+                ref={blurRef}
+                className="fixed pointer-events-none"
+                style={{
+                    width: `${INTERACTION_RADIUS * 2}px`,
+                    height: `${INTERACTION_RADIUS * 2}px`,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(72, 68, 228, 0.15)',
+                    filter: 'blur(100px)',
+                    transition: 'transform 0.1s ease-out',
+                }}
+            />
+        </>
     )
 }
 
