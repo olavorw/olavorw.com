@@ -51,10 +51,10 @@ export function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMe
                                     className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-colors duration-200 ease-in-out"
                                 >
                                     <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-500/15 group-hover:divide-gray-900/10">
-                                        <item.icon aria-hidden="true" className="size-6 text-gray-300 group-hover:text-[#32b7b6] transition-colors duration-200 ease-in-out" />
+                                        <item.icon aria-hidden="true" className="size-6 text-gray-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out" />
                                     </div>
                                     <div className="flex-auto">
-                                        <a href={item.href} className="block font-semibold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-[#32b7b6] group-hover:to-[#425389] group-hover:bg-clip-text transition-colors duration-200 ease-in-out">
+                                        <a href={item.href} className="block font-semibold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-[#6717cd] group-hover:to-[#2871fa] group-hover:bg-clip-text transition-colors duration-200 ease-in-out">
                                             {item.name}
                                             <span className="absolute inset-0" />
                                         </a>
@@ -69,11 +69,11 @@ export function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMe
                                     <a
                                         key={item.name}
                                         href={item.href}
-                                        className="group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white hover:bg-gray-900/15 hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                        className="group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white hover:bg-gray-900/15 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                     >
                                         <item.icon
                                             aria-hidden="true"
-                                            className="size-5 flex-none text-white transition-colors duration-200 ease-in-out group-hover:text-[#32b7b6]"
+                                            className="size-5 flex-none text-white transition-colors duration-200 ease-in-out group-hover:text-[#6717cd]"
                                         />
                                         {item.name}
                                     </a>
