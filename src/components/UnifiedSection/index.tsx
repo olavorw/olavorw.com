@@ -1,5 +1,5 @@
 /*
-Copyright 2024 Olav "Olavorw" Sharma, Sahil Chopra - 4934 (https://4934.tech)
+Copyright 2024 Olav "Olavorw" Sharma (https://olavorw.com), Sahil Chopra - 4934 (https://4934.tech)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
