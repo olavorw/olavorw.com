@@ -362,7 +362,7 @@ function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3C
 
 const col3: MenuItem[] = [
     { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/showcase/projectGallery', icon: GalleryHorizontal },
-    { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/showcase/webComponents', icon: AppWindowIcon },
+    { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/showcase/web-components', icon: AppWindowIcon },
 ]
 const col3CTA: MenuCTAItem[] = [
     { name: 'View All', href: '/showcase', icon: ArrowPathIcon },
