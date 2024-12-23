@@ -50,7 +50,7 @@ export function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMe
                                     key={item.name}
                                     className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-colors duration-200 ease-in-out"
                                 >
-                                    <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-gray-900/10">
+                                    <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-slate-900/10">
                                         <item.icon aria-hidden="true" className="size-6 text-slate-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out" />
                                     </div>
                                     <div className="flex-auto">
@@ -64,7 +64,7 @@ export function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMe
                             ))}
                         </div>
                         {ctaItems && (
-                            <div className="grid grid-cols-2 divide-x divide-gray-900/5">
+                            <div className="grid grid-cols-2 divide-x divide-slate-900/5">
                                 {ctaItems.map((item: MenuCTAItem) => (
                                     <a
                                         key={item.name}

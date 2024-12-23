@@ -66,7 +66,7 @@ export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div className="fixed inset-0 bg-gray-700/5" />
+                    <div className="fixed inset-0 bg-slate-700/5" />
                 </Transition.Child>
 
                 <div className="fixed inset-0 overflow-hidden">
@@ -108,24 +108,24 @@ export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3
                                                 <DisclosureMenu label="Solutions" items={col1WithCTA}/>
                                                 <a
                                                     href="#"
-                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-slate-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                                 >
                                                     Gallery
                                                 </a>
                                                 <DisclosureMenu label="Hackathons" items={col2WithCTA}/>
                                                 <a
                                                     href="#"
-                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-slate-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                                 >
                                                     About
                                                 </a>
                                                 <DisclosureMenu label="Projects" items={col3WithCTA}/>
                                             </div>
                                         </div>
-                                        <div className="border-t border-gray-400/50 px-6 py-6">
+                                        <div className="border-t border-slate-400/50 px-6 py-6">
                                             <a
                                                 href="#"
-                                                className="block rounded-lg py-2.5 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                className="block rounded-lg py-2.5 text-base/7 font-semibold text-white hover:bg-slate-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                             >
                                                 Log in
                                             </a>
