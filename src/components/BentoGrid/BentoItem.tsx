@@ -17,46 +17,59 @@ limitations under the License.
 import { BentoItemProps } from '@/components/BentoGrid/BentoGrid.types';
 
 export default function BentoItem({
-                                      title,
-                                      description,
-                                      imageSrc,
-                                      imageAlt,
-                                      className = '',
-                                      imageWrapperClassName = '',
-                                      imageClassName = '',
-                                      children,
-                                  }: BentoItemProps) {
-    if (!title && !description && !imageSrc && !children) {
-        return null;
-    }
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  className = '',
+  imageWrapperClassName = '',
+  imageClassName = '',
+  children,
+}: BentoItemProps) {
+  if (!title && !description && !imageSrc && !children) {
+    return null;
+  }
 
-    return (
-        <div className={`${className} ${!imageSrc ? 'col-span-1 row-span-1' : ''}`}>
-            <div
-                style={{ backdropFilter: `blur(10px)`, WebkitBackdropFilter: `blur(10px)` }}
-                className="absolute inset-px rounded-lg bg-black/40"
-            ></div>
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
-                {(title || description) && (
-                    <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-                        {title && (
-                            <h3 className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">{title}</h3>
-                        )}
-                        {description && (
-                            <p className="mt-2 max-w-lg text-sm/6 text-slate-400 max-lg:text-center">{description}</p>
-                        )}
-                    </div>
-                )}
-                {(imageSrc || children) && (
-                    <div className={imageWrapperClassName}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        {imageSrc && <img className={imageClassName} src={imageSrc} alt={imageAlt || ''} />}
-                        {children}
-                    </div>
-                )}
-            </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
-        </div>
-    );
+  return (
+    <div className={`${className} ${!imageSrc ? 'col-span-1 row-span-1' : ''}`}>
+      <div
+        style={{
+          backdropFilter: `blur(10px)`,
+          WebkitBackdropFilter: `blur(10px)`,
+        }}
+        className="absolute inset-px rounded-lg bg-black/40"
+      ></div>
+      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
+        {(title || description) && (
+          <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+            {title && (
+              <h3 className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
+                {title}
+              </h3>
+            )}
+            {description && (
+              <p className="mt-2 max-w-lg text-sm/6 text-slate-400 max-lg:text-center">
+                {description}
+              </p>
+            )}
+          </div>
+        )}
+        {(imageSrc || children) && (
+          <div className={imageWrapperClassName}>
+            {}
+            {imageSrc && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                className={imageClassName}
+                src={imageSrc}
+                alt={imageAlt || ''}
+              />
+            )}
+            {children}
+          </div>
+        )}
+      </div>
+      <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
+    </div>
+  );
 }
-

@@ -1,28 +1,35 @@
 import { ReactNode } from 'react';
 
 interface BadgeProps {
-    color?: 'slate' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
-    text?: ReactNode;
+  color?:
+    | 'slate'
+    | 'red'
+    | 'yellow'
+    | 'green'
+    | 'blue'
+    | 'indigo'
+    | 'purple'
+    | 'pink';
+  text?: ReactNode;
 }
 
 const colorClasses = {
-    slate: 'bg-slate-50 text-slate-600 ring-slate-500/10',
-    red: 'bg-red-50 text-red-700 ring-red-600/10',
-    yellow: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20',
-    green: 'bg-green-50 text-green-700 ring-green-600/20',
-    blue: 'bg-blue-50 text-blue-700 ring-blue-700/10',
-    indigo: 'bg-indigo-50 text-indigo-700 ring-indigo-700/10',
-    purple: 'bg-purple-50 text-purple-700 ring-purple-700/10',
-    pink: 'bg-pink-50 text-pink-700 ring-pink-700/10',
+  slate: 'bg-slate-50 text-slate-600 ring-slate-500/10',
+  red: 'bg-red-50 text-red-700 ring-red-600/10',
+  yellow: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20',
+  green: 'bg-green-50 text-green-700 ring-green-600/20',
+  blue: 'bg-blue-50 text-blue-700 ring-blue-700/10',
+  indigo: 'bg-indigo-50 text-indigo-700 ring-indigo-700/10',
+  purple: 'bg-purple-50 text-purple-700 ring-purple-700/10',
+  pink: 'bg-pink-50 text-pink-700 ring-pink-700/10',
 };
 
 export default function Badge({ color = 'slate', text = 'Badge' }: BadgeProps) {
-    return (
-        <span
-            className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${colorClasses[color]}`}
-        >
+  return (
+    <span
+      className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${colorClasses[color]}`}
+    >
       {text}
     </span>
-    );
+  );
 }
-
