@@ -49,6 +49,7 @@ export default function BentoItem({
                 )}
                 {(imageSrc || children) && (
                     <div className={imageWrapperClassName}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         {imageSrc && <img className={imageClassName} src={imageSrc} alt={imageAlt || ''} />}
                         {children}
                     </div>
