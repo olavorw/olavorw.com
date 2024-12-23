@@ -38,18 +38,30 @@ export default function webComponents() {
                             "They need to work universally.",
                     }
                 ]}
+                additionalContent={"Not all components I've made are explicitly displayed on this page, as said before. While I'm extremely happy" +
+                    " of how the NavBar and Footer components, they're not shown here for the sake of haing a more focused showcase, as you can see " +
+                    "them by looking at the top or bottom of the page anyways."}
                 finalTitle={"Licensing"}
                 finalContent={"All of my web components are licensed under the terms in my copyright page linked below. More" +
                     " broadly, I chose to license my works under the Apache 2.0 for attribution and it being a good license.\n" +
                     " Note that I don't usually give a fuss about giving credit, but these web components are near and dear to" +
                     " my heart, so please give attribution under license rules and the copyright. If you're wondering, I usually" +
-                    " license under the GNU General Public License (GPLv3)."}
+                    " license under the GNU General Public License (GPLv3). \n With all that said, enjoy the showcase!"}
 
                 imageSrc={"https://placehold.co/800x600/png"}
                 links={[
                     {
-                        name: "Web",
+                        name: "Component Repository",
                         href: "https://github.com/olavorw/component-repository"
+                    },
+
+                    {
+                        name: "Documentation",
+                        href: "https://olavorw.com/docs"
+                    },
+                    {
+                        name: "Copyright",
+                        href: "https://olavorw.com/"
                     }
                 ]}
             />
