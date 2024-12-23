@@ -87,7 +87,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                     <div className={centered || rightAligned ? '' : 'lg:pr-4'}>
                         <div className={centered ? 'max-w-3xl mx-auto' : rightAligned ? 'lg:max-w-lg ml-auto' : 'lg:max-w-lg'}>
                             {tagline && (
-                                <p className="text-base/7 font-semibold text-transparent bg-gradient-to-r from-[#32b7b6] to-[#425389] bg-clip-text">
+                                <p className="text-base/7 font-semibold text-transparent bg-gradient-to-r from-[#4844e4] to-[#2871fa] bg-clip-text">
                                     {tagline}
                                 </p>
                             )}
@@ -117,12 +117,12 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                     className={`${content ? 'mt-8' : ''} space-y-8 text-pretty text-gray-400 ${centered || rightAligned ? 'inline-block text-left' : ''}`}>
                                     {features.map((feature, index) => (
                                         <li key={index} className="flex gap-x-3">
-                                            <div className="mt-1 size-5 flex-none text-[#32b7b6]">
+                                            <div className="mt-1 size-5 flex-none text-[#4844e4]">
                                                 {feature.icon}
                                             </div>
                                             <span>
                                                 <strong
-                                                    className="font-semibold bg-gradient-to-r from-[#32b7b6] to-[#425389] bg-clip-text text-transparent">
+                                                    className="font-semibold bg-gradient-to-r from-[#4844e4] to-[#2871fa] bg-clip-text text-transparent">
                                                     {feature.title}
                                                 </strong>{': '}
                                                 {feature.description}
@@ -161,7 +161,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                     <Link
                                         key={link.name}
                                         href={link.href}
-                                        className="text-sm/6 font-semibold leading-6 text-white hover:text-transparent hover:bg-gradient-to-r hover:from-[#32b7b6] hover:to-[#425389] hover:bg-clip-text transition ease-in-out duration-300"
+                                        className="text-sm/6 font-semibold leading-6 text-white hover:text-transparent hover:bg-gradient-to-r hover:from-[#4844e4] hover:to-[#2871fa] hover:bg-clip-text transition ease-in-out duration-300"
                                     >
                                         {link.name} <span aria-hidden="true">→</span>
                                     </Link>
