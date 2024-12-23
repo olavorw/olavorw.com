@@ -16,11 +16,11 @@ limitations under the License.
 
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Link from "next/link"
 import { Logo } from "@/components/Logo"
 import { Mail, Twitter, Github, Youtube, Gitlab, Triangle } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 
 const baseClasses = "flex items-center gap-x-1 text-sm/6 font-semibold transition-all duration-200 ease-in-out group";
 const hoverClasses = "hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text hover:scale-105 hover:shadow-glow";
@@ -64,6 +64,8 @@ const footerSections = [
 
 export default function Footer() {
     const [opacity, setOpacity] = useState(0)
+    const footerRef = useRef(null)
+    const isInView = useInView(footerRef, { once: true, amount: 0.1 })
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -75,9 +77,10 @@ export default function Footer() {
 
     return (
         <motion.footer
+            ref={footerRef}
             className="px-6 py-8 mt-auto"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
             <motion.div
@@ -104,7 +107,7 @@ export default function Footer() {
                             <motion.p
                                 className="text-slate-300 text-sm leading-relaxed max-w-xs"
                                 initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
+                                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                                 transition={{ delay: 0.2, duration: 0.5 }}
                             >
                                 I do cool nerdy stuff! よい一日を！
@@ -112,7 +115,7 @@ export default function Footer() {
                             <motion.div
                                 className="mt-6 flex gap-6"
                                 initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
+                                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                                 transition={{ delay: 0.4, duration: 0.5 }}
                             >
                                 {socialIcons.map(({ Icon, href, label }) => (
@@ -136,7 +139,7 @@ export default function Footer() {
                                 key={section.title}
                                 className="sm:col-span-1 lg:col-span-2"
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                 transition={{ delay: 0.1 * sectionIndex, duration: 0.5 }}
                             >
                                 <h3 className="text-sm font-semibold text-white">{section.title}</h3>
@@ -165,7 +168,7 @@ export default function Footer() {
                     <motion.div
                         className="mt-16 border-t border-slate-800 pt-8"
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ delay: 0.6, duration: 0.5 }}
                     >
                         <Link
