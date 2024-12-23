@@ -115,7 +115,7 @@ export default function Footer() {
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.4, duration: 0.5 }}
                             >
-                                {socialIcons.map(({ Icon, href, label }, index) => (
+                                {socialIcons.map(({ Icon, href, label }) => (
                                     <motion.div
                                         key={label}
                                         whileHover={{ scale: 1.2, rotate: 360 }}

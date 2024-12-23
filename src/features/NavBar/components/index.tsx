@@ -1,22 +1,7 @@
-/*
-Copyright 2024 Olav "Olavorw" Sharma (https://olavorw.com)
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 'use client'
 
 import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
     ArrowPathIcon,
     Bars3Icon,
@@ -33,9 +18,8 @@ import { DesktopMenu } from './DesktopMenu'
 import { MobileMenu } from './MobileMenu'
 import { NavItem } from './NavItem'
 import { MenuCTAItem, MenuItem } from '@/features/NavBar/NavBar.types'
-import {AppWindowIcon, GalleryHorizontal} from "lucide-react";
+import { AppWindowIcon, GalleryHorizontal } from 'lucide-react'
 
-// noinspection SpellCheckingInspection
 const col3: MenuItem[] = [
     { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/showcase/projectGallery', icon: GalleryHorizontal },
     { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/showcase/webComponents', icon: AppWindowIcon },
@@ -44,7 +28,6 @@ const col3CTA: MenuCTAItem[] = [
     { name: 'View All', href: '/showcase', icon: ArrowPathIcon },
 ]
 
-// noinspection SpellCheckingInspection
 const col2: MenuItem[] = [
     { name: 'Winter 2024', description: 'An online single-day hackathon', href: 'col2/winter2024', icon: Bars3Icon },
     { name: 'PwnPointed', description: 'A security themed online hackathon.', href: 'col2/pwnpointed', icon: ShieldCheckIcon },
@@ -88,7 +71,12 @@ export default function NavBar() {
     }, [])
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-40 px-4 py-4 transition-all duration-300 ease-in-out">
+        <motion.header
+            className="fixed top-0 left-0 right-0 z-40 px-4 py-4 transition-all duration-300 ease-in-out"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+        >
             <nav
                 aria-label="Global"
                 className="border-white/5 border mx-auto flex max-w-[1400px] items-center justify-between sm:rounded-3xl py-2 px-6 transition-all duration-300 ease-in-out"
@@ -99,18 +87,24 @@ export default function NavBar() {
                     boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`
                 }}
             >
-                <div className="flex lg:flex-1">
+                <motion.div
+                    className="flex lg:flex-1"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
                     <Logo />
-                </div>
+                </motion.div>
                 <div className="flex lg:hidden">
-                    <button
+                    <motion.button
                         type="button"
                         onClick={() => setMobileMenuOpen(true)}
                         className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-300 ease-in-out ${opacity > 0.5 ? 'text-slate-300' : 'text-slate-700'}`}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
                     >
                         <span className="sr-only">Open main menu</span>
                         <Bars3Icon aria-hidden="true" className="size-6" />
-                    </button>
+                    </motion.button>
                 </div>
                 <DesktopMenu
                     col1={col1}
@@ -126,19 +120,23 @@ export default function NavBar() {
                     <NavItem label="Join Us" href="#" hasArrow />
                 </div>
             </nav>
-            <MobileMenu
-                isOpen={mobileMenuOpen}
-                onClose={() => setMobileMenuOpen(false)}
-                col1={col1}
-                col1CTA={col1CTA}
-                col2={col2}
-                col2CTA={col2CTA}
-                col3={col3}
-                col3CTA={col3CTA}
-                opacity={opacity}
-                blur={blur}
-            />
-        </header>
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <MobileMenu
+                        isOpen={mobileMenuOpen}
+                        onClose={() => setMobileMenuOpen(false)}
+                        col1={col1}
+                        col1CTA={col1CTA}
+                        col2={col2}
+                        col2CTA={col2CTA}
+                        col3={col3}
+                        col3CTA={col3CTA}
+                        opacity={opacity}
+                        blur={blur}
+                    />
+                )}
+            </AnimatePresence>
+        </motion.header>
     )
 }
 
