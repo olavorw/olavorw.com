@@ -90,7 +90,7 @@ const ContactForm: FC = () => {
 
   return (
     <motion.div
-      className="relative isolate overflow-hidden"
+      className="relative isolate overflow-hidden py-8 sm:py-6"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
