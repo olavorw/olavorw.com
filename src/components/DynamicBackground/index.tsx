@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// I'm proud of this one. It's a dynamic background that looks like a cyberpunk city. It's a bit heavy on the CPU, but it's worth it.
+
 'use client'
 
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
