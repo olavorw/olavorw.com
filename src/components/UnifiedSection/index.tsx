@@ -247,8 +247,12 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                             href={link.href}
                                             className={`${baseClasses} group flex items-center gap-x-2 text-sm/6 font-semibold text-white`}
                                         >
-                                            {link.name}
-                                            <ArrowRight className="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                                            <div className={"hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text hover:scale-105 hover:shadow-glow"}>
+                                                {link.name}
+                                            </div>
+                                            <div className={"group-hover:text-[#2871fa]"}>
+                                                 <ArrowRight className="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+                                           </div>
                                         </Link>
                                     </motion.div>
                                 ))}

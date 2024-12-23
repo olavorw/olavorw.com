@@ -8,9 +8,12 @@ export default function webComponents() {
                 tagline={"Showcase"}
                 title={"Web Components"}
                 description={"A showcase of my favorite web components I've developed"}
-                content={"Here are some of the best web components I've ever built! Not all of them are here, but these are the" +
+                content={"When building my websites, my larger projects being 4934.tech and this website, I've gotten some experience making" +
+                    " amazing components.\n" +
+                    "This page is dedicated to some of the best web components I've ever built! Not all of them are here, but these are the" +
                     " ones I'm most proud of. If you want to see the source code, I'll provide a link to the repository with all" +
-                    " of my web components below.\nWhen I build my components, I keep the following in mind:"}
+                    " of my web components below." +
+                    "\nWhen I build my components, I keep the following in mind:"}
                 boldTitle={true}
                 features={[
                     {
@@ -43,6 +46,12 @@ export default function webComponents() {
                     " license under the GNU General Public License (GPLv3)."}
 
                 imageSrc={"https://placehold.co/800x600/png"}
+                links={[
+                    {
+                        name: "Web",
+                        href: "https://github.com/olavorw/component-repository"
+                    }
+                ]}
             />
         </>
     )
