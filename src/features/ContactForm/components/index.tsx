@@ -74,7 +74,7 @@ const ContactForm: FC = () => {
 
     return (
         <motion.div
-            className="relative isolate overflow-hidden py-24 sm:py-32"
+            className="relative isolate overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -85,7 +85,7 @@ const ContactForm: FC = () => {
             <motion.form
                 ref={formRef}
                 onSubmit={handleSubmit(onSubmit)}
-                className="mx-auto mt-16 max-w-xl border-white/5 border sm:rounded-3xl px-8 py-10"
+                className="mx-auto max-w-xl border-white/5 border sm:rounded-3xl px-8 py-10"
                 style={{
                     background: 'linear-gradient(to right, rgba(103, 23, 205, 0.1), rgba(40, 113, 250, 0.1))',
                     backdropFilter: 'blur(10px)',
