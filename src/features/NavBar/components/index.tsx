@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, forwardRef } from 'react'
+import { useEffect, useState, forwardRef, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Popover, PopoverButton, PopoverPanel, PopoverGroup, Disclosure, Dialog, DialogPanel } from '@headlessui/react'
 import {
@@ -18,20 +18,15 @@ import {
 import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { AppWindowIcon, GalleryHorizontal } from 'lucide-react'
 import { Logo } from '@/components/Logo'
-// import { DesktopMenu } from './DesktopMenu'
-// import { MobileMenu } from './MobileMenu'
-// import { NavItem } from './NavItem'
-import { MenuItem, MenuCTAItem, MenuProps } from '../NavBar.types'
-
-// NavItem Component
-interface NavItemProps {
-    label: string;
-    href?: string;
-    isOpen?: boolean;
-    hasDropdown?: boolean;
-    hasArrow?: boolean;
-    onClick?: () => void;
-}
+import {
+    MenuItem,
+    MenuCTAItem,
+    NavItemProps,
+    DisclosureMenuProps,
+    PopoverMenuProps,
+    DesktopMenuProps,
+    MobileMenuProps
+} from '../NavBar.types'
 
 const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
     ({ label, href = '#', isOpen, hasDropdown, hasArrow, onClick }, ref) => {
@@ -69,12 +64,6 @@ const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
 
 NavItem.displayName = 'NavItem';
 
-// DisclosureMenu Component
-interface DisclosureMenuProps {
-    label: string;
-    items: MenuItem[];
-}
-
 function DisclosureMenu({ label, items }: DisclosureMenuProps) {
     return (
         <Disclosure as="div" className="w-full">
@@ -107,15 +96,6 @@ function DisclosureMenu({ label, items }: DisclosureMenuProps) {
             )}
         </Disclosure>
     );
-}
-
-// PopoverMenu Component
-interface PopoverMenuProps {
-    label: string;
-    items: MenuItem[];
-    ctaItems?: MenuCTAItem[];
-    opacity: number;
-    blur: number;
 }
 
 function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps) {
@@ -194,20 +174,14 @@ function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps
     );
 }
 
-// DesktopMenu Component
-interface DesktopMenuProps extends MenuProps {
-    opacity: number;
-    blur: number;
-}
-
 function DesktopMenu({ col1, col1CTA, col2, col2CTA, col3, col3CTA, opacity, blur }: DesktopMenuProps) {
-    const menuItems = [
+    const menuItems = useMemo(() => [
         { label: "Projects", items: col1, ctaItems: col1CTA },
         { label: "Gallery", href: "#" },
         { label: "About Me", items: col2, ctaItems: col2CTA },
         { label: "Example", href: "#" },
         { label: "Showcase", items: col3, ctaItems: col3CTA },
-    ];
+    ], [col1, col1CTA, col2, col2CTA, col3, col3CTA]);
 
     return (
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
@@ -227,6 +201,12 @@ function DesktopMenu({ col1, col1CTA, col2, col2CTA, col3, col3CTA, opacity, blu
                             ctaItems={item.ctaItems}
                             opacity={opacity}
                             blur={blur}
+                            col1={col1}
+                            col1CTA={col1CTA}
+                            col2={col2}
+                            col2CTA={col2CTA}
+                            col3={col3}
+                            col3CTA={col3CTA}
                         />
                     )}
                 </motion.div>
@@ -235,39 +215,21 @@ function DesktopMenu({ col1, col1CTA, col2, col2CTA, col3, col3CTA, opacity, blu
     );
 }
 
-// MobileMenu Component
-interface MobileMenuProps extends MenuProps {
-    isOpen: boolean;
-    onClose: () => void;
-    opacity: number;
-    blur: number;
-}
-
 function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3CTA, opacity, blur }: MobileMenuProps) {
-    // Convert CTA items to MenuItem format by adding a description field
-    const col1WithCTA: MenuItem[] = [
+    const col1WithCTA = useMemo(() => [
         ...col1,
-        ...col1CTA.map(cta => ({
-            ...cta,
-            description: '' // Add empty description to satisfy MenuItem type
-        }))
-    ];
+        ...col1CTA.map(cta => ({ ...cta, description: '' }))
+    ], [col1, col1CTA]);
 
-    const col2WithCTA: MenuItem[] = [
+    const col2WithCTA = useMemo(() => [
         ...col2,
-        ...col2CTA.map(cta => ({
-            ...cta,
-            description: '' // Add empty description to satisfy MenuItem type
-        }))
-    ];
+        ...col2CTA.map(cta => ({ ...cta, description: '' }))
+    ], [col2, col2CTA]);
 
-    const col3WithCTA: MenuItem[] = [
+    const col3WithCTA = useMemo(() => [
         ...col3,
-        ...col3CTA.map(cta => ({
-            ...cta,
-            description: '' // Add empty description to satisfy MenuItem type
-        }))
-    ];
+        ...col3CTA.map(cta => ({ ...cta, description: '' }))
+    ], [col3, col3CTA]);
 
     return (
         <AnimatePresence>
@@ -364,7 +326,6 @@ function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3C
     );
 }
 
-// Main NavBar Component
 const col3: MenuItem[] = [
     { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/showcase/projectGallery', icon: GalleryHorizontal },
     { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/showcase/webComponents', icon: AppWindowIcon },
@@ -401,19 +362,19 @@ export default function NavBar() {
     const [opacity, setOpacity] = useState(0)
     const [blur, setBlur] = useState(0)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY
-            const maxScroll = 200 // Adjust this value to control how quickly the effect maxes out
-            const newOpacity = Math.min(scrollPosition / maxScroll, 0.4) // Max opacity of 0.4
-            const newBlur = Math.min(scrollPosition / maxScroll * 10, 10) // Max blur of 10px
-            setOpacity(newOpacity)
-            setBlur(newBlur)
-        }
+    const handleScroll = useCallback(() => {
+        const scrollPosition = window.scrollY
+        const maxScroll = 200 // Adjust this value to control how quickly the effect maxes out
+        const newOpacity = Math.min(scrollPosition / maxScroll, 0.4) // Max opacity of 0.4
+        const newBlur = Math.min(scrollPosition / maxScroll * 10, 10) // Max blur of 10px
+        setOpacity(newOpacity)
+        setBlur(newBlur)
+    }, [])
 
+    useEffect(() => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
+    }, [handleScroll])
 
     return (
         <motion.header
