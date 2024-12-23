@@ -41,6 +41,10 @@ const glowStyle = {
     textShadow: '0 0 10px rgba(72, 68, 228, 0.5), 0 0 20px rgba(72, 68, 228, 0.3), 0 0 30px rgba(72, 68, 228, 0.1)'
 };
 
+const hoverGlowStyle = {
+    boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)',
+};
+
 const CallToAction = forwardRef<HTMLDivElement, CallToActionProps>(
     (
         { tagline, description, buttonText, buttonLink, gradientStartColor = "#6717cd", gradientStopColor = "#2871fa", imageSource, imageWidth, imageHeight, imageSizing = "60rem", showCase = false },
@@ -72,7 +76,7 @@ const CallToAction = forwardRef<HTMLDivElement, CallToActionProps>(
                             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                         }}
                         className={`relative isolate overflow-hidden border-white/5 border px-6 ${showCase ? 'pt-6' : 'pt-16'} sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0`}
-                        whileHover={{ scale: 1.01 }}
+                        whileHover={{ scale: 1.01, ...hoverGlowStyle }}
                         transition={{ duration: 0.3 }}
                     >
                         <svg
