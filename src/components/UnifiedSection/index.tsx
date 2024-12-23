@@ -173,6 +173,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                                             transition={{ duration: 0.5, delay: 0.1 * index }}
+                                            whileHover={{ scale: 1.02 }}
                                         >
                                             <motion.div
                                                 className="mt-1 size-5 flex-none text-[#4844e4]"
@@ -183,7 +184,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                             <span>
                                                 <motion.strong
                                                     className="font-semibold bg-gradient-to-r from-[#4844e4] to-[#2871fa] bg-clip-text text-transparent"
-                                                    whileHover={{ scale: 1.05 }}
+                                                    whileHover={{ scale: 1.02 }}
                                                     style={glowStyle}
                                                 >
                                                     {feature.title}
@@ -298,8 +299,8 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                 height={1080}
                                 className={`${
                                     centered || rightAligned
-                                        ? 'w-full h-full object-cover rounded-xl'
-                                        : 'w-[48rem] max-w-none rounded-xl bg-white shadow-xl ring-1 bg-clip-border/10 sm:w-[57rem]'
+                                        ? 'w-full h-full object-cover sm:rounded-3xl'
+                                        : 'w-[48rem] max-w-none sm:rounded-3xl bg-white shadow-xl ring-1 bg-clip-border/10 sm:w-[57rem]'
                                 }`}
                             />
                             {(centered || rightAligned) && (

@@ -15,18 +15,24 @@ export default function webComponents() {
                 features={[
                     {
                         icon: <ArrowRightIcon />,
-                        title: "Feature 1",
-                        description: "This is the first feature"
+                        title: "Functionality",
+                        description: "My components need to be functional. They need to be useful, and need to work."
                     },
                     {
                         icon: <ArrowRightIcon />,
-                        title: "Feature 2",
-                        description: "This is the second feature"
+                        title: "Dynamics",
+                        description: "I build components to be extremely dynamic, like this one."
                     },
                     {
                         icon: <ArrowRightIcon />,
-                        title: "Feature 3",
-                        description: "This is the third feature"
+                        title: "Design",
+                        description: "My components need to look sleek, and beautiful. They're my work of art."
+                    },
+                    {
+                        icon: <ArrowRightIcon />,
+                        title: "Compatibility",
+                        description: "I make sure my components are accessible to all users, no matter the device, browser, or anything else" +
+                            "They need to work universally.",
                     }
                 ]}
                 finalTitle={"Licensing"}
