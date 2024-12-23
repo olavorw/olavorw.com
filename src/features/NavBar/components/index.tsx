@@ -36,31 +36,31 @@ import { MenuCTAItem, MenuItem } from '@/features/NavBar/NavBar.types'
 import {AppWindowIcon, GalleryHorizontal} from "lucide-react";
 
 // noinspection SpellCheckingInspection
-const projects: MenuItem[] = [
-    { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/projects/ultraagent', icon: GalleryHorizontal },
-    { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/projects/malware', icon: AppWindowIcon },
+const col3: MenuItem[] = [
+    { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/showcase/projectGallery', icon: GalleryHorizontal },
+    { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/showcase/webComponents', icon: AppWindowIcon },
 ]
 
 // noinspection SpellCheckingInspection
-const hackathons: MenuItem[] = [
-    { name: 'Winter 2024', description: 'An online single-day hackathon', href: 'hackathons/winter2024', icon: Bars3Icon },
-    { name: 'PwnPointed', description: 'A security themed online hackathon.', href: 'hackathons/pwnpointed', icon: ShieldCheckIcon },
-    { name: 'XAutomation', description: 'A multi-day in-person automation themed hackathon.', href: 'hackathons/summer2024', icon: XMarkIcon },
+const col2: MenuItem[] = [
+    { name: 'Winter 2024', description: 'An online single-day hackathon', href: 'col2/winter2024', icon: Bars3Icon },
+    { name: 'PwnPointed', description: 'A security themed online hackathon.', href: 'col2/pwnpointed', icon: ShieldCheckIcon },
+    { name: 'XAutomation', description: 'A multi-day in-person automation themed hackathon.', href: 'col2/summer2024', icon: XMarkIcon },
 ]
 
-const hackathonsCTA: MenuCTAItem[] = [
-    { name: 'View Upcoming', href: 'hackathons/upcoming', icon: ArrowPathIcon },
-    { name: 'View All', href: 'hackathons', icon: ArrowPathIcon },
+const col2CTA: MenuCTAItem[] = [
+    { name: 'View Upcoming', href: 'col2/upcoming', icon: ArrowPathIcon },
+    { name: 'View All', href: 'col2', icon: ArrowPathIcon },
 ]
 
-const solutions: MenuItem[] = [
+const col1: MenuItem[] = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
     { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
     { name: 'Security', description: 'Your customers data will be safe and secure', href: '#', icon: FingerPrintIcon },
     { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
     { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
 ]
-const solutionsCTA: MenuCTAItem[] = [
+const col1CTA: MenuCTAItem[] = [
     { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
@@ -110,11 +110,11 @@ export default function NavBar() {
                     </button>
                 </div>
                 <DesktopMenu
-                    solutions={solutions}
-                    solutionsCTA={solutionsCTA}
-                    hackathons={hackathons}
-                    hackathonsCTA={hackathonsCTA}
-                    projects={projects}
+                    col1={col1}
+                    col1CTA={col1CTA}
+                    col2={col2}
+                    col2CTA={col2CTA}
+                    col3={col3}
                     opacity={opacity}
                     blur={blur}
                 />
@@ -125,11 +125,11 @@ export default function NavBar() {
             <MobileMenu
                 isOpen={mobileMenuOpen}
                 onClose={() => setMobileMenuOpen(false)}
-                solutions={solutions}
-                solutionsCTA={solutionsCTA}
-                hackathons={hackathons}
-                hackathonsCTA={hackathonsCTA}
-                projects={projects}
+                col1={col1}
+                col1CTA={col1CTA}
+                col2={col2}
+                col2CTA={col2CTA}
+                col3={col3}
                 opacity={opacity}
                 blur={blur}
             />

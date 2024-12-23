@@ -28,19 +28,19 @@ interface MobileMenuProps extends MenuProps {
     blur: number;
 }
 
-export function MobileMenu({ isOpen, onClose, solutions, solutionsCTA, hackathons, hackathonsCTA, projects, opacity, blur }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, opacity, blur }: MobileMenuProps) {
     // Convert CTA items to MenuItem format by adding a description field
-    const solutionsWithCTA: MenuItem[] = [
-        ...solutions,
-        ...solutionsCTA.map(cta => ({
+    const col1WithCTA: MenuItem[] = [
+        ...col1,
+        ...col1CTA.map(cta => ({
             ...cta,
             description: '' // Add empty description to satisfy MenuItem type
         }))
     ];
 
-    const hackathonsWithCTA: MenuItem[] = [
-        ...hackathons,
-        ...hackathonsCTA.map(cta => ({
+    const col2WithCTA: MenuItem[] = [
+        ...col2,
+        ...col2CTA.map(cta => ({
             ...cta,
             description: '' // Add empty description to satisfy MenuItem type
         }))
@@ -97,21 +97,21 @@ export function MobileMenu({ isOpen, onClose, solutions, solutionsCTA, hackathon
                                         </div>
                                         <div className="relative mt-6 flex-1 px-6">
                                             <div className="space-y-4">
-                                                <DisclosureMenu label="Solutions" items={solutionsWithCTA}/>
+                                                <DisclosureMenu label="Solutions" items={col1WithCTA}/>
                                                 <a
                                                     href="#"
                                                     className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                                 >
                                                     Gallery
                                                 </a>
-                                                <DisclosureMenu label="Hackathons" items={hackathonsWithCTA}/>
+                                                <DisclosureMenu label="Hackathons" items={col2WithCTA}/>
                                                 <a
                                                     href="#"
                                                     className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-gray-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
                                                 >
                                                     About
                                                 </a>
-                                                <DisclosureMenu label="Projects" items={projects}/>
+                                                <DisclosureMenu label="Projects" items={col3}/>
                                             </div>
                                         </div>
                                         <div className="border-t border-gray-400/50 px-6 py-6">

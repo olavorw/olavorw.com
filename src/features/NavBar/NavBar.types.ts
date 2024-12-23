@@ -14,10 +14,10 @@ export interface MenuCTAItem {
 }
 
 export interface MenuProps {
-    solutions: MenuItem[];
-    solutionsCTA: MenuCTAItem[];
-    hackathons: MenuItem[];
-    hackathonsCTA: MenuCTAItem[];
-    projects: MenuItem[];
+    col1: MenuItem[];
+    col1CTA: MenuCTAItem[];
+    col2: MenuItem[];
+    col2CTA: MenuCTAItem[];
+    col3: MenuItem[];
 }
 
