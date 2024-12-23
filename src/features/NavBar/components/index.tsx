@@ -28,14 +28,24 @@ import {
     MobileMenuProps
 } from '../NavBar.types'
 
+const glowStyle = {
+    textShadow: '0 0 10px rgba(72, 68, 228, 0.5), 0 0 20px rgba(72, 68, 228, 0.3), 0 0 30px rgba(72, 68, 228, 0.1)'
+};
+
 const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
     ({ label, href = '#', isOpen, hasDropdown, hasArrow, onClick }, ref) => {
-        const baseClasses = "flex items-center gap-x-1 font-semibold transition-colors duration-200 ease-in-out group";
+        const baseClasses = "flex items-center gap-x-1 font-semibold transition-all duration-200 ease-in-out group";
         const activeClasses = "text-transparent bg-gradient-to-tr from-[#6717cd] to-[#2871fa] bg-clip-text";
-        const inactiveClasses = "text-white hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text";
+        const inactiveClasses = "text-white hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text hover:scale-105";
 
         return (
-            <a ref={ref} href={href} className={`${baseClasses} ${isOpen ? activeClasses : inactiveClasses}`} onClick={onClick}>
+            <a
+                ref={ref}
+                href={href}
+                className={`${baseClasses} ${isOpen ? activeClasses : inactiveClasses}`}
+                onClick={onClick}
+                style={glowStyle}
+            >
                 <svg width="0" height="0" className="absolute">
                     <linearGradient id="arrow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#6717cd" />
@@ -238,6 +248,7 @@ function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3C
                     as={motion.div}
                     className="relative z-50 lg:hidden"
                     onClose={onClose}
+                    open={isOpen}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -383,20 +394,21 @@ export default function NavBar() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
         >
-            <nav
+            <motion.nav
                 aria-label="Global"
                 className="border-white/5 border mx-auto flex max-w-[1400px] items-center justify-between sm:rounded-3xl py-2 px-6 transition-all duration-300 ease-in-out"
                 style={{
-                    backgroundColor: `rgba(100, 116, 139, ${0.05*opacity + 0.05})`,
+                    background: `linear-gradient(to right, rgba(103, 23, 205, ${0.1*opacity + 0.05}), rgba(40, 113, 250, ${0.1*opacity + 0.05}))`,
                     backdropFilter: `blur(${blur}px)`,
                     WebkitBackdropFilter: `blur(${blur}px)`,
                     boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`
                 }}
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.3 }}
             >
                 <motion.div
-                    className="flex lg:flex-1"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="flex lg:flex-1 transition-transform duration-300 ease-in-out hover:scale-105 hover:filter hover:drop-shadow-glow"
+                    whileHover={{ scale: 1.05, filter: "drop-shadow(0 0 10px rgba(72, 68, 228, 0.5))" }}
                 >
                     <Logo />
                 </motion.div>
@@ -404,8 +416,8 @@ export default function NavBar() {
                     <motion.button
                         type="button"
                         onClick={() => setMobileMenuOpen(true)}
-                        className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors duration-300 ease-in-out ${opacity > 0.5 ? 'text-slate-300' : 'text-slate-700'}`}
-                        whileHover={{ scale: 1.1 }}
+                        className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-all duration-300 ease-in-out ${opacity > 0.5 ? 'text-slate-300' : 'text-slate-700'} hover:text-[#4844e4]`}
+                        whileHover={{ scale: 1.1, filter: "drop-shadow(0 0 10px rgba(72, 68, 228, 0.5))" }}
                         whileTap={{ scale: 0.95 }}
                     >
                         <span className="sr-only">Open main menu</span>
@@ -425,7 +437,7 @@ export default function NavBar() {
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                     <NavItem label="Join Us" href="#" hasArrow />
                 </div>
-            </nav>
+            </motion.nav>
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <MobileMenu
