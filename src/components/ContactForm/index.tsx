@@ -64,23 +64,8 @@ const ContactForm: FC = () => {
             transition={{ duration: 0.5 }}
         >
             <div
-                className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20"
-                style={{
-                    backgroundImage: 'radial-gradient(45rem 50rem at top, rgba(103, 23, 205, 0.1), rgba(40, 113, 250, 0.1))',
-                }}
+                className="absolute inset-0 -z-10 opacity-20"
             />
-            <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white/10 shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
-            <motion.div
-                className="mx-auto max-w-2xl text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
-                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Get in touch</h2>
-                <p className="mt-2 text-lg leading-8 text-gray-300">
-                    We&apos;d love to hear from you. Drop us a line and let&apos;s create something amazing together.
-                </p>
-            </motion.div>
             <motion.form
                 ref={formRef}
                 onSubmit={handleSubmit(onSubmit)}

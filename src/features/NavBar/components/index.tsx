@@ -146,6 +146,8 @@ function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps
                                     backgroundColor: `rgba(100, 116, 139, ${0.05*opacity + 0.05})`,
                                     backdropFilter: `blur(${blur}px)`,
                                     WebkitBackdropFilter: `blur(${blur}px)`,
+                                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                                    transition: 'box-shadow 0.3s ease-in-out'
                                 }}
                             >
                                 <div className="p-4">
@@ -156,7 +158,7 @@ function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ duration: 0.2, delay: index * 0.05 }}
                                             className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-all duration-300 ease-in-out"
-                                            whileHover={{ scale: 1.05 }}
+                                            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)'}}
                                         >
                                             <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-slate-900/10">
                                                 <item.icon aria-hidden="true" className="size-6 text-slate-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out" />
