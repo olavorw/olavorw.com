@@ -11,6 +11,7 @@ interface AnimatedProps extends MotionProps {
   href?: string;
   onClick?: unknown;
   ref?: unknown;
+  whileHover?: MotionProps['whileHover'];
 }
 
 const Animated: React.FC<AnimatedProps> = ({
@@ -20,6 +21,7 @@ const Animated: React.FC<AnimatedProps> = ({
   href,
   onClick,
   ref,
+  whileHover,
   ...props
 }) => {
   const { animationsEnabled } = useAnimation();
@@ -27,11 +29,12 @@ const Animated: React.FC<AnimatedProps> = ({
   const MotionComponent: React.ElementType = motion[as];
 
   const animationProps = animationsEnabled
-    ? { ...props, className, href, onClick, ref }
+    ? { ...props, className, href, onClick, ref, whileHover }
     : {
         animate: undefined,
         initial: undefined,
         exit: undefined,
+        whileHover: undefined,
         transition: { duration: 0 },
         className,
         href,
