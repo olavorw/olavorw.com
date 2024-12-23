@@ -1,4 +1,4 @@
-import { FormData } from '@/components/ContactForm';
+import { FormData } from '@/features/ContactForm/components';
 
 export async function sendEmail(data: FormData): Promise<boolean> {
     const apiEndpoint = '/api/email';

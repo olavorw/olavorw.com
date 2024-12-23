@@ -8,6 +8,7 @@ import NavBar from "@/features/NavBar/components";
 import DynamicBackground from "../features/CyberBackground/components";
 import Footer from "@/features/Footer/components";
 import React from "react";
+{/* import Banner from "@/components/Banner"; */}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,6 +71,14 @@ export default function RootLayout({
         <html lang="en" className={`dark ${geistSans.variable} ${azeretMono.variable}`}>
         <body className="font-sans antialiased bg-slate-950 text-slate-100 flex flex-col min-h-screen">
         <NavBar />
+        {/*
+        <Banner
+        mainTitle={"Olav's wonderful website."}
+        subtitle={"I'm Olav \"Olavorw\" Sharma. I do cool nerdy stuff. "}
+        buttonText={"About Me"}
+        buttonHref={"https://olavorw.com/about"}
+        />
+        */}
         <DynamicBackground />
         <main className="flex-grow pt-16 z-10 relative">
             {children}

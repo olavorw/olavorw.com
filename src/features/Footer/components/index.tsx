@@ -63,7 +63,7 @@ const footerSections = [
             { name: "Terms of Service", href: "https://olavorw.com/policies/tos" },
             { name: "Privacy Policy", href: "https://olavorw.com/policies/privacy" },
             { name: "Copyright Information", href: "https://olavorw.com/policies/copyright" },
-            { name: "Apache 2.0 License", href: "https://www.apache.org/licenses/LICENSE-2.0" },
+            { name: "Apache License 2.0", href: "https://www.apache.org/licenses/LICENSE-2.0" },
         ],
     },
 ];

@@ -1,6 +1,6 @@
 import HomeHero from "@/features/HomeHero/components";
 import CallToAction from "@/components/CallToAction";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "../features/ContactForm/components";
 
 export default function Home() {
   return (

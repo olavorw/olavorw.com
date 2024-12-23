@@ -1,5 +1,6 @@
 import {ArrowRightIcon} from "@heroicons/react/24/outline";
 import UnifiedSection from "@/components/UnifiedSection";
+import Banner from "@/components/Banner";
 
 export default function webComponents() {
     return (
@@ -39,7 +40,7 @@ export default function webComponents() {
                     }
                 ]}
                 additionalContent={"Not all components I've made are explicitly displayed on this page, as said before. While I'm extremely happy" +
-                    " of how the NavBar and Footer components, they're not shown here for the sake of haing a more focused showcase, as you can see " +
+                    " of how the NavBar and Footer components, they're not shown here for the sake of having a more focused showcase, as you can see " +
                     "them by looking at the top or bottom of the page anyways."}
                 finalTitle={"Licensing"}
                 finalContent={"All of my web components are licensed under the terms in my copyright page linked below. More" +
@@ -64,6 +65,14 @@ export default function webComponents() {
                         href: "https://olavorw.com/"
                     }
                 ]}
+            />
+            <UnifiedSection topOfPage={false} rightAligned={true} title={"Banner"} tagline={"Web Component"} description={"A banner component to display important information"} />
+            <Banner
+                mainTitle={"Olav's wonderful website."}
+                subtitle={"I'm Olav \"Olavorw\" Sharma. I do cool nerdy stuff. "}
+                buttonText={"About Me"}
+                buttonHref={"https://olavorw.com/about"}
+                showCased={true}
             />
         </>
     )
