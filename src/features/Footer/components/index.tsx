@@ -189,7 +189,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <motion.div
-            className="mt-16 border-t border-slate-800 pt-8"
+            className="mt-16 border-t border-slate-800 pt-8 flex gap-3"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
@@ -200,7 +200,24 @@ export default function Footer() {
               style={glowStyle}
               whileHover={{ scale: 1.05 }}
             >
-              © {new Date().getFullYear()} 4934 Tech All rights reserved.
+              © {new Date().getFullYear()} Olav &quot;Olavorw&quot; Sharma, All
+              Rights Reserved.
+            </motion.a>
+            <motion.a
+              href="https://olavorw.com/policies/copyright"
+              className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
+              style={glowStyle}
+              whileHover={{ scale: 1.05 }}
+            >
+              •
+            </motion.a>
+            <motion.a
+              href=""
+              className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
+              style={glowStyle}
+              whileHover={{ scale: 1.05 }}
+            >
+              Toggle Animations
             </motion.a>
           </motion.div>
         </div>

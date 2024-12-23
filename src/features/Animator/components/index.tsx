@@ -1,26 +1,36 @@
+import React from 'react';
 import { motion, MotionProps } from 'framer-motion';
 import { useAnimation } from '../context/AnimationContext';
-import React from 'react';
 
-interface AnimatedDivProps extends MotionProps {
+// Type for valid motion elements (e.g., 'div', 'li', 'a', etc.)
+type MotionElement = keyof typeof motion;
+
+interface AnimatedProps extends MotionProps {
+  as?: MotionElement; // Optional, defaults to 'div'
   children: React.ReactNode;
 }
 
-const AnimatedDiv: React.FC<AnimatedDivProps> = ({ children, ...props }) => {
+const Animated: React.FC<AnimatedProps> = ({
+  as = 'div', // Default to 'div'
+  children,
+  ...props
+}) => {
   const { animationsEnabled } = useAnimation();
 
-  const noAnimationProps: MotionProps = {
-    animate: undefined,
-    initial: undefined,
-    exit: undefined,
-    transition: { duration: 0 },
-  };
+  // Dynamically select the motion element
+  const MotionComponent: React.ElementType = motion[as];
 
-  return (
-    <motion.div {...(animationsEnabled ? props : noAnimationProps)}>
-      {children}
-    </motion.div>
-  );
+  // Disable animations by overriding animation props
+  const animationProps = animationsEnabled
+    ? props
+    : {
+        animate: undefined,
+        initial: undefined,
+        exit: undefined,
+        transition: { duration: 0 },
+      };
+
+  return <MotionComponent {...animationProps}>{children}</MotionComponent>;
 };
 
-export default AnimatedDiv;
+export default Animated;

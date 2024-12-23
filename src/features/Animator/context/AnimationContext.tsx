@@ -2,19 +2,25 @@ import React, { createContext, useContext, useState } from 'react';
 
 interface AnimationContextProps {
   animationsEnabled: boolean;
-  setAnimationsEnabled: (enabled: boolean) => void;
+  toggleAnimations: () => void;
 }
 
-const AnimationContext = createContext<AnimationContextProps | undefined>(undefined);
+const AnimationContext = createContext<AnimationContextProps | undefined>(
+  undefined
+);
 
-export const AnimationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AnimationProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [animationsEnabled, setAnimationsEnabled] = useState(true);
 
+  const toggleAnimations = () => setAnimationsEnabled((prev) => !prev);
+
   return (
-    <AnimationContext.Provider value={{ animationsEnabled, setAnimationsEnabled }}>
-  {children}
-  </AnimationContext.Provider>
-);
+    <AnimationContext.Provider value={{ animationsEnabled, toggleAnimations }}>
+      {children}
+    </AnimationContext.Provider>
+  );
 };
 
 export const useAnimation = (): AnimationContextProps => {
