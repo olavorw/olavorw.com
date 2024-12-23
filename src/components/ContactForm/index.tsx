@@ -89,11 +89,13 @@ const ContactForm: FC = () => {
                     background: 'linear-gradient(to right, rgba(103, 23, 205, 0.1), rgba(40, 113, 250, 0.1))',
                     backdropFilter: 'blur(10px)',
                     WebkitBackdropFilter: 'blur(10px)',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    transition: 'box-shadow 0.3s ease-in-out'
                 }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)' }}
+                transition={{ duration: 0.3 }}
             >
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                     {[
