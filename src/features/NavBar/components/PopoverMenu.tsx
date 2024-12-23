@@ -51,14 +51,14 @@ export function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMe
                                     className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-colors duration-200 ease-in-out"
                                 >
                                     <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-gray-900/10">
-                                        <item.icon aria-hidden="true" className="size-6 text-gray-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out" />
+                                        <item.icon aria-hidden="true" className="size-6 text-slate-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out" />
                                     </div>
                                     <div className="flex-auto">
                                         <a href={item.href} className="block font-semibold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-[#6717cd] group-hover:to-[#2871fa] group-hover:bg-clip-text transition-colors duration-200 ease-in-out">
                                             {item.name}
                                             <span className="absolute inset-0" />
                                         </a>
-                                        <p className="mt-1 text-gray-400">{item.description}</p>
+                                        <p className="mt-1 text-slate-400">{item.description}</p>
                                     </div>
                                 </div>
                             ))}

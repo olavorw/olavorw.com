@@ -95,7 +95,7 @@ export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3
                                                 <Logo />
                                                 <button
                                                     type="button"
-                                                    className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                                                    className="rounded-md text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                                                     onClick={onClose}
                                                 >
                                                     <span className="sr-only">Close panel</span>

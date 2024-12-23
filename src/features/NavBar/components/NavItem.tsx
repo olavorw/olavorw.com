@@ -45,14 +45,14 @@ export const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
                     <ChevronDownIcon
                         aria-hidden="true"
                         className={`size-5 flex-none transition-transform duration-300 ease-in-out ${
-                            isOpen ? 'rotate-180 text-[#2871fa]' : 'text-gray-300 group-hover:text-[#2871fa]'
+                            isOpen ? 'rotate-180 text-[#2871fa]' : 'text-slate-300 group-hover:text-[#2871fa]'
                         }`}
                     />
                 )}
                 {hasArrow && (
                     <ArrowRightIcon
                         aria-hidden="true"
-                        className="size-4 flex-none text-gray-300 group-hover:fill-[url(#arrow-gradient)] transition-colors duration-200 ease-in-out"
+                        className="size-4 flex-none text-slate-300 group-hover:fill-[url(#arrow-gradient)] transition-colors duration-200 ease-in-out"
                     />
                 )}
             </a>
