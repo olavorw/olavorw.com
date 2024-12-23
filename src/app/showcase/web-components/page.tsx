@@ -5,11 +5,12 @@ export default function webComponents() {
     return (
         <>
             <UnifiedSection
-                tagline={"Unified Section"}
-                title={"The Title"}
-                description={"This is my super duper awesome Unified Section component! It's so cool, you won't believe it!"}
-                content={"That above was the description, now this is the content, the content is the most important part of the" +
-                    " Unified Section component, it's where you put the most important information."}
+                tagline={"Showcase"}
+                title={"Web Components"}
+                description={"A showcase of my favorite web components I've developed"}
+                content={"Here are some of the best web components I've ever built! Not all of them are here, but these are the" +
+                    " ones I'm most proud of. If you want to see the source code, I'll provide a link to the repository with all" +
+                    " of my web components below.\nWhen I build my components, I keep the following in mind:"}
                 boldTitle={true}
                 features={[
                     {
@@ -28,12 +29,15 @@ export default function webComponents() {
                         description: "This is the third feature"
                     }
                 ]}
-                additionalContent={"This is the additional content, it's where you put the most important information."}
-                finalTitle={"Final Title"}
-                finalContent={"This is where you put your final content, I don't usually use this but I can put some footer" +
-                    " notes. One being that this is super dynamic and I can remove anything I want, change alignment, and more!"}
+                finalTitle={"Licensing"}
+                finalContent={"All of my web components are licensed under the terms in my copyright page linked below. More" +
+                    " broadly, I chose to license my works under the Apache 2.0 for attribution and it being a good license.\n" +
+                    " Note that I don't usually give a fuss about giving credit, but these web components are near and dear to" +
+                    " my heart, so please give attribution under license rules and the copyright. If you're wondering, I usually" +
+                    " license under the GNU General Public License (GPLv3)."}
 
-                imageSrc={"https://placehold.co/800x600/png"}/>
+                imageSrc={"https://placehold.co/800x600/png"}
+            />
         </>
     )
 }
