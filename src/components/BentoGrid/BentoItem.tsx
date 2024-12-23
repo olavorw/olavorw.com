@@ -43,7 +43,7 @@ export default function BentoItem({
                             <h3 className="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">{title}</h3>
                         )}
                         {description && (
-                            <p className="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">{description}</p>
+                            <p className="mt-2 max-w-lg text-sm/6 text-slate-400 max-lg:text-center">{description}</p>
                         )}
                     </div>
                 )}

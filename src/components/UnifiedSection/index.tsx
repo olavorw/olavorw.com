@@ -95,16 +95,16 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                 {title}
                             </h1>
                             {description && (
-                                <p className="mt-8 text-pretty text-lg font-medium text-gray-300 sm:text-xl/8">
+                                <p className="mt-8 text-pretty text-lg font-medium text-slate-300 sm:text-xl/8">
                                     {description}
                                 </p>
                             )}
                         </div>
                         <div className={`${
                             centered ? 'text-center' : rightAligned ? 'text-right' : 'max-w-xl lg:max-w-lg'
-                        } text-lg text-pretty text-gray-300`}>
+                        } text-lg text-pretty text-slate-300`}>
                             {content && (
-                                <div className={`mt-8 text-gray-300 text-pretty`}>
+                                <div className={`mt-8 text-slate-300 text-pretty`}>
                                     {content.split('\n').map((paragraph, index) => (
                                         <p key={index} className={index > 0 ? 'mt-4' : ''}>
                                             {paragraph}
@@ -114,7 +114,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                             )}
                             {features.length > 0 && (
                                 <ul role="list"
-                                    className={`${content ? 'mt-8' : ''} space-y-8 text-pretty text-gray-400 ${centered || rightAligned ? 'inline-block text-left' : ''}`}>
+                                    className={`${content ? 'mt-8' : ''} space-y-8 text-pretty text-slate-400 ${centered || rightAligned ? 'inline-block text-left' : ''}`}>
                                     {features.map((feature, index) => (
                                         <li key={index} className="flex gap-x-3">
                                             <div className="mt-1 size-5 flex-none text-[#4844e4]">
@@ -132,7 +132,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                                 </ul>
                             )}
                             {additionalContent && (
-                                <div className={`text-gray-300 text-pretty ${features.length > 0 ? 'mt-8' : ''}`}>
+                                <div className={`text-slate-300 text-pretty ${features.length > 0 ? 'mt-8' : ''}`}>
                                     {additionalContent.split('\n').map((paragraph, index) => (
                                         <p key={index} className={index > 0 ? 'mt-4' : ''}>
                                             {paragraph}
@@ -172,7 +172,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
                             <dl className={`mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 ${centered || rightAligned ? 'lg:grid-cols-4' : ''}`}>
                                 {stats.map((stat) => (
                                     <div key={stat.name} className="flex flex-col-reverse">
-                                        <dt className="text-base leading-7 text-gray-300">{stat.name}</dt>
+                                        <dt className="text-base leading-7 text-slate-300">{stat.name}</dt>
                                         <dd className="text-2xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
                                     </div>
                                 ))}

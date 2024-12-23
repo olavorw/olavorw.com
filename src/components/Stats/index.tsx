@@ -56,9 +56,9 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
         >
-            <Card className="overflow-hidden bg-gray-500/5 border-white/5 border sm:rounded-3xl">
+            <Card className="overflow-hidden bg-slate-500/5 border-white/5 border sm:rounded-3xl">
                 <CardContent className="p-6">
-                    <dt className="text-sm font-medium text-gray-400 mb-2">{stat.name}</dt>
+                    <dt className="text-sm font-medium text-slate-400 mb-2">{stat.name}</dt>
                     <dd className="text-4xl font-bold text-white tracking-tight">
                         {stat.value}
                     </dd>

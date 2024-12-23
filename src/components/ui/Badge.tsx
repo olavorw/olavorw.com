@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
 interface BadgeProps {
-    color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
+    color?: 'slate' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
     text?: ReactNode;
 }
 
 const colorClasses = {
-    gray: 'bg-gray-50 text-gray-600 ring-gray-500/10',
+    slate: 'bg-slate-50 text-slate-600 ring-slate-500/10',
     red: 'bg-red-50 text-red-700 ring-red-600/10',
     yellow: 'bg-yellow-50 text-yellow-800 ring-yellow-600/20',
     green: 'bg-green-50 text-green-700 ring-green-600/20',
@@ -16,7 +16,7 @@ const colorClasses = {
     pink: 'bg-pink-50 text-pink-700 ring-pink-700/10',
 };
 
-export default function Badge({ color = 'gray', text = 'Badge' }: BadgeProps) {
+export default function Badge({ color = 'slate', text = 'Badge' }: BadgeProps) {
     return (
         <span
             className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${colorClasses[color]}`}

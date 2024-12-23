@@ -33,7 +33,7 @@ export default function BentoGrid({ items = {} }: BentoGridProps) {
                             {...items.col1}
                             className="relative"
                             imageWrapperClassName="relative min-h-[30rem] w-full grow [container-type:inline-size] max-lg:mx-auto max-lg:max-w-sm"
-                            imageClassName="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl"
+                            imageClassName="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-slate-700 bg-slate-900 shadow-2xl"
                         />
                         <BentoItem
                             {...items.col2}
@@ -51,11 +51,11 @@ export default function BentoGrid({ items = {} }: BentoGridProps) {
                             {...items.col4}
                             className="relative"
                             imageWrapperClassName="relative min-h-[30rem] w-full grow"
-                            imageClassName="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-gray-900 shadow-2xl"
+                            imageClassName="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-slate-900 shadow-2xl"
                         >
                             {items.col4?.codeSnippet && (
                                 <div className="px-6 pb-14 pt-6">
-                                    <pre className="text-sm text-gray-300 overflow-x-auto">
+                                    <pre className="text-sm text-slate-300 overflow-x-auto">
                                         <code>{items.col4.codeSnippet}</code>
                                     </pre>
                                 </div>

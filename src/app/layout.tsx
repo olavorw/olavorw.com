@@ -68,7 +68,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`dark ${geistSans.variable} ${azeretMono.variable}`}>
-        <body className="font-sans antialiased bg-gray-950 text-gray-100 flex flex-col min-h-screen">
+        <body className="font-sans antialiased bg-slate-950 text-slate-100 flex flex-col min-h-screen">
         <NavBar />
         <DynamicBackground />
         <main className="flex-grow pt-16 z-10 relative">

@@ -62,7 +62,7 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
             {showTitle && (
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className={`text-balance text-4xl ${topOfPage ? 'font-bold text-5xl sm:text-7xl' : 'font-semibold text-4xl sm:text-5xl'} tracking-tight text-white sm:text-5xl`}>Contact 4934</h2>
-                    <p className="mt-8 text-xl/8 font-semibold text-gray-300">If you would like to get in touch with us, please fill out this form.</p>
+                    <p className="mt-8 text-xl/8 font-semibold text-slate-300">If you would like to get in touch with us, please fill out this form.</p>
                 </div>
             )}
             <form onSubmit={handleSubmit(onSubmit)} className={`mx-auto ${showTitle ? 'mt-16 sm:mt-20' : ''} max-w-xl`}>
@@ -76,7 +76,7 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
                                 id="firstName"
                                 type="text"
                                 autoComplete="given-name"
-                                className="block w-full rounded-md bg-gray-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
+                                className="block w-full rounded-md bg-slate-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-slate-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
                                 {...register('firstName', { required: true })}
                             />
                         </div>
@@ -91,7 +91,7 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
                                 id="lastName"
                                 type="text"
                                 autoComplete="family-name"
-                                className="block w-full rounded-md bg-gray-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
+                                className="block w-full rounded-md bg-slate-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-slate-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
                                 {...register('lastName', { required: true })}
                             />
                         </div>
@@ -106,7 +106,7 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
                                 id="email"
                                 type="email"
                                 autoComplete="email"
-                                className="block w-full rounded-md bg-gray-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
+                                className="block w-full rounded-md bg-slate-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-slate-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
                                 {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                             />
                         </div>
@@ -121,7 +121,7 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
                                 id="company"
                                 type="text"
                                 autoComplete="organization"
-                                className="block w-full rounded-md bg-gray-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
+                                className="block w-full rounded-md bg-slate-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-slate-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
                                 {...register('company')}
                             />
                         </div>
@@ -134,7 +134,7 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
                             <textarea
                                 id="message"
                                 rows={4}
-                                className="block w-full rounded-md bg-gray-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
+                                className="block w-full rounded-md bg-slate-500/5 px-3.5 py-2 text-base text-white outline outline-1 -outline-offset-1 outline-white/5 placeholder:text-slate-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[#32b7b6] transition-all duration-300 ease-in-out"
                                 {...register('message', { required: true })}
                             />
                         </div>
@@ -145,16 +145,16 @@ const ContactForm: FC<ContactFormProps> = ({ topOfPage = false, showTitle = fals
                             <Switch
                                 checked={agreed}
                                 onChange={setAgreed}
-                                className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-800 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#32b7b6] data-[checked]:bg-gradient-to-r data-[checked]:from-[#32b7b6] data-[checked]:to-[#425389]"
+                                className="group flex w-8 flex-none cursor-pointer rounded-full bg-slate-800 p-px ring-1 ring-inset ring-slate-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#32b7b6] data-[checked]:bg-gradient-to-r data-[checked]:from-[#32b7b6] data-[checked]:to-[#425389]"
                             >
                                 <span className="sr-only">Agree to policies</span>
                                 <span
                                     aria-hidden="true"
-                                    className="size-4 transform rounded-full bg-gray-200 shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out group-data-[checked]:translate-x-3.5"
+                                    className="size-4 transform rounded-full bg-slate-200 shadow-sm ring-1 ring-slate-900/5 transition duration-200 ease-in-out group-data-[checked]:translate-x-3.5"
                                 />
                             </Switch>
                         </div>
-                        <Label className="text-sm/6 text-gray-400">
+                        <Label className="text-sm/6 text-slate-400">
                             By selecting this, you agree to our{' '}
                             <a href="https://4934.tech/policies/privacy-policy"
                                className="text-transparent bg-gradient-to-r from-[#32b7b6] to-[#1d243c] bg-clip-text transition-colors">

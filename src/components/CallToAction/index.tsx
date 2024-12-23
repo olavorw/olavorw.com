@@ -58,7 +58,7 @@ const CallToAction = forwardRef<HTMLDivElement, CallToActionProps>(
             >
                 <div className={`mx-auto max-w-7xl ${showCase ? '' : 'py-24 sm:py-32'} sm:px-6 lg:px-8`}>
                     <div style={{backdropFilter: `blur(10px)`, WebkitBackdropFilter: `blur(10px)`}}
-                         className={`relative isolate overflow-hidden bg-gray-500/5 border-white/5 border px-6 ${showCase ? 'pt-6' : 'pt-16'} shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0`}>
+                         className={`relative isolate overflow-hidden bg-slate-500/5 border-white/5 border px-6 ${showCase ? 'pt-6' : 'pt-16'} shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0`}>
                         <svg
                             viewBox="0 0 1024 1024"
                             aria-hidden="true"
@@ -82,13 +82,13 @@ const CallToAction = forwardRef<HTMLDivElement, CallToActionProps>(
                             <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                                 {tagline}
                             </h2>
-                            <p className="mt-6 text-pretty text-lg/8 text-gray-300">
+                            <p className="mt-6 text-pretty text-lg/8 text-slate-300">
                                 {description}
                             </p>
                             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                                 <a
                                     href={buttonLink}
-                                    className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                                    className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                                 >
                                     {buttonText}
                                 </a>

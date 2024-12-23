@@ -55,7 +55,7 @@ export default function Banner({ mainTitle, subtitle, buttonText, buttonHref, sh
     if (!isVisible) return null
 
     const bannerClasses = `
-        flex items-center justify-between gap-x-6 rounded-lg bg-gray-500/5 border-white/5 border backdrop-blur-md px-10 py-2.5 
+        flex items-center justify-between gap-x-6 rounded-lg bg-slate-500/5 border-white/5 border backdrop-blur-md px-10 py-2.5 
         transition-all duration-300 ease-in-out
         ${isAnimated && !isDisappearing ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}
         ${showCased ? 'w-full max-w-7xl mx-auto' : 'fixed left-1/2 z-40 w-full max-w-7xl transform -translate-x-1/2'}
