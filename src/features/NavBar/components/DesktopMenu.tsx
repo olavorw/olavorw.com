@@ -27,11 +27,11 @@ interface DesktopMenuProps extends MenuProps {
 export function DesktopMenu({ solutions, solutionsCTA, hackathons, hackathonsCTA, projects, opacity, blur }: DesktopMenuProps) {
     return (
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-            <PopoverMenu label="Solutions" items={solutions} ctaItems={solutionsCTA} opacity={opacity} blur={blur} />
+            <PopoverMenu label="Projects" items={solutions} ctaItems={solutionsCTA} opacity={opacity} blur={blur} />
             <NavItem label="Gallery" href="#" />
-            <PopoverMenu label="Hackathons" items={hackathons} ctaItems={hackathonsCTA} opacity={opacity} blur={blur} />
-            <NavItem label="About" href="#" />
-            <PopoverMenu label="Projects" items={projects} opacity={opacity} blur={blur} />
+            <PopoverMenu label="About Me" items={hackathons} ctaItems={hackathonsCTA} opacity={opacity} blur={blur} />
+            <NavItem label="Example" href="#" />
+            <PopoverMenu label="Showcase" items={projects} opacity={opacity} blur={blur} />
         </PopoverGroup>
     );
 }

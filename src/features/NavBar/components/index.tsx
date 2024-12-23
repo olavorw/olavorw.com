@@ -20,7 +20,6 @@ import { useEffect, useState } from 'react'
 import {
     ArrowPathIcon,
     Bars3Icon,
-    BeakerIcon,
     ChartPieIcon,
     CursorArrowRaysIcon,
     FingerPrintIcon,
@@ -34,11 +33,12 @@ import { DesktopMenu } from './DesktopMenu'
 import { MobileMenu } from './MobileMenu'
 import { NavItem } from './NavItem'
 import { MenuCTAItem, MenuItem } from '@/features/NavBar/NavBar.types'
+import {AppWindowIcon, GalleryHorizontal} from "lucide-react";
 
 // noinspection SpellCheckingInspection
 const projects: MenuItem[] = [
-    { name: 'UltraAgent', description: 'A powerful AI powered agent with real-world capabilities.', href: '/projects/ultraagent', icon: BeakerIcon },
-    { name: 'malware.4934.tech', description: 'A massive malware repository with a focus on security.', href: '/projects/malware', icon: ShieldCheckIcon },
+    { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/projects/ultraagent', icon: GalleryHorizontal },
+    { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/projects/malware', icon: AppWindowIcon },
 ]
 
 // noinspection SpellCheckingInspection
