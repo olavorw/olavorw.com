@@ -41,7 +41,7 @@ export default function Footer() {
         <footer className="px-6 py-8 mt-auto">
             <div className="border-white/5 border mx-auto max-w-[1400px] sm:rounded-3xl transition-all duration-500 ease-in-out"
                  style={{
-                     backgroundColor: `rgba(203, 213, 225, ${0.05*opacity + 0.05})`,
+                     backgroundColor: `rgba(100, 116, 139, ${0.05*opacity + 0.05})`,
                      backdropFilter: `blur(10px)`,
                      WebkitBackdropFilter: `blur(10px)`,
                      boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`
