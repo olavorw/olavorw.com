@@ -3,7 +3,7 @@ import { Geist } from "next/font/google";
 import { Azeret_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import NavBar from "@/features/NavBar/components";
-import DynamicBackground from "@/components/DynamicBackground";
+import DynamicBackground from "../features/CyberBackground";
 import Footer from "@/features/Footer/components";
 import React from "react";
 
