@@ -1,3 +1,19 @@
+/*
+Copyright 2024 Olav "Olavorw" Sharma (https://olavorw.com)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 'use client'
 
 import { useEffect, useState, forwardRef, useMemo, useCallback } from 'react'
@@ -28,21 +44,20 @@ import {
     MobileMenuProps
 } from '../NavBar.types'
 
+const baseClasses = "flex items-center gap-x-1 text-sm/6 font-semibold transition-all duration-200 ease-in-out group";
+const hoverClasses = "hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text hover:scale-105 hover:shadow-glow";
+
 const glowStyle = {
     textShadow: '0 0 10px rgba(72, 68, 228, 0.5), 0 0 20px rgba(72, 68, 228, 0.3), 0 0 30px rgba(72, 68, 228, 0.1)'
 };
 
 const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
     ({ label, href = '#', isOpen, hasDropdown, hasArrow, onClick }, ref) => {
-        const baseClasses = "flex items-center gap-x-1 font-semibold transition-all duration-200 ease-in-out group";
-        const activeClasses = "text-transparent bg-gradient-to-tr from-[#6717cd] to-[#2871fa] bg-clip-text";
-        const inactiveClasses = "text-white hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text hover:scale-105";
-
         return (
             <a
                 ref={ref}
                 href={href}
-                className={`${baseClasses} ${isOpen ? activeClasses : inactiveClasses}`}
+                className={`${baseClasses} ${hoverClasses} ${isOpen ? 'text-transparent bg-gradient-to-tr from-[#6717cd] to-[#2871fa] bg-clip-text' : 'text-white'}`}
                 onClick={onClick}
                 style={glowStyle}
             >
@@ -79,16 +94,16 @@ function DisclosureMenu({ label, items }: DisclosureMenuProps) {
         <Disclosure as="div" className="w-full">
             {({ open }) => (
                 <>
-                    <Disclosure.Button className={`group flex w-full items-center justify-between rounded-lg py-2 text-base/7 font-semibold transition-all duration-300 ease-in-out ${
+                    <Disclosure.Button className={`${baseClasses} ${hoverClasses} group flex w-full items-center justify-between rounded-lg py-2 text-base/7 font-semibold transition-all duration-300 ease-in-out ${
                         open
                             ? 'text-transparent bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text'
-                            : 'text-white hover:bg-slate-900/5 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text'
+                            : 'text-white'
                     }`}
                     >
                         {label}
                         <ChevronDownIcon
                             aria-hidden="true"
-                            className={`size-5 flex-none transition-transform duration-300 ease-in-out ${open ? 'rotate-180' : ''} ${open ? 'text-[#6717cd]' : 'group-hover:text-[#6717cd]'}`}
+                            className={`size-5 flex-none transition-transform duration-300 ease-in-out ${open ? 'rotate-180' : ''} ${open ? 'text-[#6717cd]' : 'group-hover:text-[#2871fa]'}`}
                         />
                     </Disclosure.Button>
                     <Disclosure.Panel className="mt-2 space-y-2">
@@ -96,7 +111,7 @@ function DisclosureMenu({ label, items }: DisclosureMenuProps) {
                             <a
                                 key={item.name}
                                 href={item.href}
-                                className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-white hover:bg-black900/15 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-slate-400`}
                             >
                                 {item.name}
                             </a>
@@ -140,13 +155,14 @@ function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ duration: 0.2, delay: index * 0.05 }}
-                                            className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-colors duration-200 ease-in-out"
+                                            className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-all duration-300 ease-in-out"
+                                            whileHover={{ scale: 1.05 }}
                                         >
                                             <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-slate-900/10">
                                                 <item.icon aria-hidden="true" className="size-6 text-slate-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out" />
                                             </div>
                                             <div className="flex-auto">
-                                                <a href={item.href} className="block font-semibold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-[#6717cd] group-hover:to-[#2871fa] group-hover:bg-clip-text transition-colors duration-200 ease-in-out">
+                                                <a href={item.href} className={`${baseClasses} ${hoverClasses} block font-semibold text-white`}>
                                                     {item.name}
                                                     <span className="absolute inset-0" />
                                                 </a>
@@ -161,7 +177,7 @@ function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps
                                             <motion.a
                                                 key={item.name}
                                                 href={item.href}
-                                                className="group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white hover:bg-slate-900/15 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                className={`${baseClasses} ${hoverClasses} group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white`}
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.2, delay: 0.1 + index * 0.05 }}
@@ -298,7 +314,7 @@ function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3C
                                                 <DisclosureMenu label="Solutions" items={col1WithCTA}/>
                                                 <motion.a
                                                     href="#"
-                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-slate-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                    className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                                                     whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
                                                 >
@@ -307,7 +323,7 @@ function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3C
                                                 <DisclosureMenu label="Hackathons" items={col2WithCTA}/>
                                                 <motion.a
                                                     href="#"
-                                                    className="block rounded-lg py-2 text-base/7 font-semibold text-white hover:bg-slate-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                    className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                                                     whileHover={{ scale: 1.05 }}
                                                     whileTap={{ scale: 0.95 }}
                                                 >
@@ -319,7 +335,7 @@ function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3C
                                         <div className="border-t border-slate-400/50 px-6 py-6">
                                             <motion.a
                                                 href="#"
-                                                className="block rounded-lg py-2.5 text-base/7 font-semibold text-white hover:bg-slate-500/50 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text transition-colors duration-200 ease-in-out"
+                                                className={`${baseClasses} ${hoverClasses} block rounded-lg py-2.5 text-base/7 font-semibold text-slate-400`}
                                                 whileHover={{ scale: 1.05 }}
                                                 whileTap={{ scale: 0.95 }}
                                             >
