@@ -6,7 +6,7 @@ type MotionElement = keyof typeof motion;
 
 interface AnimatedProps extends MotionProps {
   as?: MotionElement;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   href?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLDivElement>;
