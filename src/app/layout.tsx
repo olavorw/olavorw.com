@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Azeret_Mono } from "next/font/google";
