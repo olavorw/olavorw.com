@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAnimation } from '../context/AnimationContext';
-import { motion } from 'framer-motion';
+import Animated from './index';
 
 const AnimationToggleLink: React.FC = () => {
   const { animationsEnabled, toggleAnimations } = useAnimation();
@@ -11,9 +11,10 @@ const AnimationToggleLink: React.FC = () => {
     'hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text hover:scale-105 hover:shadow-glow';
 
   return (
-    <motion.a
+    <Animated
+      as="a"
       href="#"
-      onClick={(e) => {
+      onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         toggleAnimations();
       }}
@@ -25,7 +26,7 @@ const AnimationToggleLink: React.FC = () => {
       whileHover={{ scale: 1.05 }}
     >
       {animationsEnabled ? 'Disable Animations' : 'Enable Animations'}
-    </motion.a>
+    </Animated>
   );
 };
 

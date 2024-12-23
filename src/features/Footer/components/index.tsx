@@ -22,7 +22,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 import { Github, Gitlab, Mail, Triangle, Twitter, Youtube } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import AnimationToggleLink from '@/features/Animator/components/AnimationToggleLink';
 import { AnimationProvider } from '@/features/Animator/context/AnimationContext';
 import Animated from '@/features/Animator/components';
@@ -95,7 +95,8 @@ export default function Footer() {
 
   return (
     <AnimationProvider>
-      <motion.footer
+      <Animated
+        as="footer"
         ref={footerRef}
         className="px-6 py-8 mt-auto"
         initial={{ opacity: 0, y: 50 }}
@@ -126,14 +127,15 @@ export default function Footer() {
                 >
                   <Logo />
                 </Animated>
-                <motion.p
+                <Animated
+                  as="p"
                   className="text-slate-300 text-sm leading-relaxed max-w-xs"
                   initial={{ opacity: 0 }}
                   animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
                 >
                   I do cool nerdy stuff! よい一日を！
-                </motion.p>
+                </Animated>
                 <Animated
                   className="mt-6 flex gap-6"
                   initial={{ opacity: 0 }}
@@ -175,7 +177,8 @@ export default function Footer() {
                   </h3>
                   <ul className="mt-4 space-y-3">
                     {section.items.map((item, itemIndex) => (
-                      <motion.li
+                      <Animated
+                        as="li"
                         key={typeof item === 'string' ? item : item.name}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -188,7 +191,7 @@ export default function Footer() {
                         >
                           {typeof item === 'string' ? item : item.name}
                         </Link>
-                      </motion.li>
+                      </Animated>
                     ))}
                   </ul>
                 </Animated>
@@ -202,7 +205,8 @@ export default function Footer() {
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
             >
-              <motion.a
+              <Animated
+                as="a"
                 href="https://olavorw.com/policies/copyright"
                 className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
                 style={glowStyle}
@@ -210,20 +214,20 @@ export default function Footer() {
               >
                 © {new Date().getFullYear()} Olav &quot;Olavorw&quot; Sharma,
                 All Rights Reserved.
-              </motion.a>
-              <motion.a
+              </Animated>
+              <Animated
                 href="https://olavorw.com/policies/copyright"
                 className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
                 style={glowStyle}
                 whileHover={{ scale: 1.05 }}
               >
                 •
-              </motion.a>
+              </Animated>
               <AnimationToggleLink />
             </Animated>
           </div>
         </Animated>
-      </motion.footer>
+      </Animated>
     </AnimationProvider>
   );
 }

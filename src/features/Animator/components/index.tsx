@@ -8,12 +8,18 @@ interface AnimatedProps extends MotionProps {
   as?: MotionElement;
   children: React.ReactNode;
   className?: string;
+  href?: string;
+  onClick?: unknown;
+  ref?: unknown;
 }
 
 const Animated: React.FC<AnimatedProps> = ({
   as = 'div',
   children,
   className,
+  href,
+  onClick,
+  ref,
   ...props
 }) => {
   const { animationsEnabled } = useAnimation();
@@ -21,13 +27,16 @@ const Animated: React.FC<AnimatedProps> = ({
   const MotionComponent: React.ElementType = motion[as];
 
   const animationProps = animationsEnabled
-    ? { ...props, className }
+    ? { ...props, className, href, onClick, ref }
     : {
         animate: undefined,
         initial: undefined,
         exit: undefined,
         transition: { duration: 0 },
         className,
+        href,
+        onClick,
+        ref,
       };
 
   return <MotionComponent {...animationProps}>{children}</MotionComponent>;
