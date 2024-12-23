@@ -78,7 +78,7 @@ const ContactForm: FC = () => {
             >
                 <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Get in touch</h2>
                 <p className="mt-2 text-lg leading-8 text-gray-300">
-                    We'd love to hear from you. Drop us a line and let's create something amazing together.
+                    We&apos;d love to hear from you. Drop us a line and let&apos;s create something amazing together.
                 </p>
             </motion.div>
             <motion.form
@@ -219,7 +219,7 @@ const ContactForm: FC = () => {
                             exit={{ opacity: 0, y: -10 }}
                         >
                             <CheckCircle className="mr-2 h-4 w-4" />
-                            Thank you for your message. We'll be in touch soon!
+                            Thank you for your message. We&apos;ll be in touch soon!
                         </motion.p>
                     )}
                     {emailError && (
