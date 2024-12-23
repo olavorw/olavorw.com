@@ -1,3 +1,5 @@
+// noinspection JSDeprecatedSymbols
+
 /*
 Copyright 2024 Olav "Olavorw" Sharma (https://olavorw.com)
 

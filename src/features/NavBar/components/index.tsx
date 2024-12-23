@@ -368,6 +368,7 @@ const col3CTA: MenuCTAItem[] = [
     { name: 'View All', href: '/showcase', icon: ArrowPathIcon },
 ]
 
+// noinspection SpellCheckingInspection
 const col2: MenuItem[] = [
     { name: 'Winter 2024', description: 'An online single-day hackathon', href: 'col2/winter2024', icon: Bars3Icon },
     { name: 'PwnPointed', description: 'A security themed online hackathon.', href: 'col2/pwnpointed', icon: ShieldCheckIcon },
