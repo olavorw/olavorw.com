@@ -31,7 +31,7 @@ export function DisclosureMenu({ label, items }: DisclosureMenuProps) {
                     <Disclosure.Button className={`group flex w-full items-center justify-between rounded-lg py-2 text-base/7 font-semibold transition-all duration-300 ease-in-out ${
                         open
                             ? 'text-transparent bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text'
-                            : 'text-white hover:bg-gray-900/5 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text'
+                            : 'text-white hover:bg-slate-900/5 hover:text-transparent hover:bg-gradient-to-r hover:from-[#6717cd] hover:to-[#2871fa] hover:bg-clip-text'
                     }`}
                     >
                         {label}
