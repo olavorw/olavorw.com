@@ -24,14 +24,14 @@ interface DesktopMenuProps extends MenuProps {
     blur: number;
 }
 
-export function DesktopMenu({ col1, col1CTA, col2, col2CTA, col3, opacity, blur }: DesktopMenuProps) {
+export function DesktopMenu({ col1, col1CTA, col2, col2CTA, col3, col3CTA, opacity, blur }: DesktopMenuProps) {
     return (
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
             <PopoverMenu label="Projects" items={col1} ctaItems={col1CTA} opacity={opacity} blur={blur} />
             <NavItem label="Gallery" href="#" />
             <PopoverMenu label="About Me" items={col2} ctaItems={col2CTA} opacity={opacity} blur={blur} />
             <NavItem label="Example" href="#" />
-            <PopoverMenu label="Showcase" items={col3} opacity={opacity} blur={blur} />
+            <PopoverMenu label="Showcase" items={col3} ctaItems={col3CTA} opacity={opacity} blur={blur} />
         </PopoverGroup>
     );
 }

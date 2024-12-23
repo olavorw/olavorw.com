@@ -40,6 +40,9 @@ const col3: MenuItem[] = [
     { name: 'Project Gallery', description: 'A gallery of some of my favorite projects', href: '/showcase/projectGallery', icon: GalleryHorizontal },
     { name: 'Web Components', description: 'A showcase of my favorite web components I\'ve developed', href: '/showcase/webComponents', icon: AppWindowIcon },
 ]
+const col3CTA: MenuCTAItem[] = [
+    { name: 'View All', href: '/showcase', icon: ArrowPathIcon },
+]
 
 // noinspection SpellCheckingInspection
 const col2: MenuItem[] = [
@@ -115,6 +118,7 @@ export default function NavBar() {
                     col2={col2}
                     col2CTA={col2CTA}
                     col3={col3}
+                    col3CTA={col3CTA}
                     opacity={opacity}
                     blur={blur}
                 />
@@ -130,6 +134,7 @@ export default function NavBar() {
                 col2={col2}
                 col2CTA={col2CTA}
                 col3={col3}
+                col3CTA={col3CTA}
                 opacity={opacity}
                 blur={blur}
             />

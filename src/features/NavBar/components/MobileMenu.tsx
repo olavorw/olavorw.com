@@ -28,7 +28,7 @@ interface MobileMenuProps extends MenuProps {
     blur: number;
 }
 
-export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, opacity, blur }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3, col3CTA, opacity, blur }: MobileMenuProps) {
     // Convert CTA items to MenuItem format by adding a description field
     const col1WithCTA: MenuItem[] = [
         ...col1,
@@ -41,6 +41,14 @@ export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3
     const col2WithCTA: MenuItem[] = [
         ...col2,
         ...col2CTA.map(cta => ({
+            ...cta,
+            description: '' // Add empty description to satisfy MenuItem type
+        }))
+    ];
+
+    const col3WithCTA: MenuItem[] = [
+        ...col3,
+        ...col3CTA.map(cta => ({
             ...cta,
             description: '' // Add empty description to satisfy MenuItem type
         }))
@@ -111,7 +119,7 @@ export function MobileMenu({ isOpen, onClose, col1, col1CTA, col2, col2CTA, col3
                                                 >
                                                     About
                                                 </a>
-                                                <DisclosureMenu label="Projects" items={col3}/>
+                                                <DisclosureMenu label="Projects" items={col3WithCTA}/>
                                             </div>
                                         </div>
                                         <div className="border-t border-gray-400/50 px-6 py-6">

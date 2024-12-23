@@ -19,5 +19,6 @@ export interface MenuProps {
     col2: MenuItem[];
     col2CTA: MenuCTAItem[];
     col3: MenuItem[];
+    col3CTA: MenuCTAItem[];
 }
 
