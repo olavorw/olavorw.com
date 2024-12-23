@@ -25,7 +25,7 @@ const AnimationToggleLink: React.FC = () => {
       }}
       whileHover={{ scale: 1.05 }}
     >
-      {animationsEnabled ? 'Disable Animations' : 'Enable Animations'}
+      {animationsEnabled ? 'Lower Animations' : 'Increase Animations'}
     </Animated>
   );
 };
