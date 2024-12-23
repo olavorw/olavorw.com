@@ -51,6 +51,10 @@ const glowStyle = {
     textShadow: '0 0 10px rgba(72, 68, 228, 0.5), 0 0 20px rgba(72, 68, 228, 0.3), 0 0 30px rgba(72, 68, 228, 0.1)'
 };
 
+const hoverGlowStyle = {
+    boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)',
+};
+
 const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
     ({ label, href = '#', isOpen, hasDropdown, hasArrow, onClick }, ref) => {
         return (
@@ -149,6 +153,7 @@ function PopoverMenu({ label, items, ctaItems, opacity, blur }: PopoverMenuProps
                                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                                     transition: 'box-shadow 0.3s ease-in-out'
                                 }}
+                                whileHover={hoverGlowStyle}
                             >
                                 <div className="p-4">
                                     {items.map((item: MenuItem, index) => (
@@ -421,7 +426,7 @@ export default function NavBar() {
                     WebkitBackdropFilter: `blur(${blur}px)`,
                     boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`
                 }}
-                whileHover={{ scale: 1.01 }}
+                whileHover={{ scale: 1.01, ...hoverGlowStyle }}
                 transition={{ duration: 0.3 }}
             >
                 <motion.div

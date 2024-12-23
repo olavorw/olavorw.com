@@ -29,6 +29,10 @@ const glowStyle = {
     textShadow: '0 0 10px rgba(72, 68, 228, 0.5), 0 0 20px rgba(72, 68, 228, 0.3), 0 0 30px rgba(72, 68, 228, 0.1)'
 };
 
+const hoverGlowStyle = {
+    boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)',
+};
+
 const socialIcons = [
     { Icon: Twitter, href: "https://twitter.com/olavorw", label: "X" },
     { Icon: Github, href: "https://github.com/olavorw", label: "GitHub" },
@@ -91,7 +95,7 @@ export default function Footer() {
                     WebkitBackdropFilter: `blur(10px)`,
                     boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`
                 }}
-                whileHover={{ scale: 1.01 }}
+                whileHover={{ scale: 1.01, ...hoverGlowStyle }}
                 transition={{ duration: 0.3 }}
             >
                 <div className="px-6 py-12 md:py-16">
@@ -121,7 +125,7 @@ export default function Footer() {
                                 {socialIcons.map(({ Icon, href, label }) => (
                                     <motion.div
                                         key={label}
-                                        whileHover={{ scale: 1.2, rotate: 360 }}
+                                        whileHover={{ scale: 1.2, rotate: 360, }}
                                         transition={{ type: "spring", stiffness: 260, damping: 20 }}
                                     >
                                         <Link href={href} className="group">
@@ -154,6 +158,7 @@ export default function Footer() {
                                             <Link
                                                 href={typeof item === 'string' ? '#' : item.href}
                                                 className={`${baseClasses} ${hoverClasses} text-slate-400`}
+                                                style={glowStyle}
                                             >
                                                 {typeof item === 'string' ? item : item.name}
                                             </Link>
@@ -171,13 +176,14 @@ export default function Footer() {
                         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ delay: 0.6, duration: 0.5 }}
                     >
-                        <Link
+                        <motion.a
                             href="https://olavorw.com/policies/copyright"
                             className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
                             style={glowStyle}
+                            whileHover={{ scale: 1.05 }}
                         >
                             © {new Date().getFullYear()} 4934 Tech All rights reserved.
-                        </Link>
+                        </motion.a>
                     </motion.div>
                 </div>
             </motion.div>
