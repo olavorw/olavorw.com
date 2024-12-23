@@ -1,5 +1,6 @@
 import HomeHero from "@/features/HomeHero/components";
 import CallToAction from "@/components/CallToAction";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -13,6 +14,8 @@ export default function Home() {
             tagline={"Lorem ipsum dolor sit amet"}
             buttonText={"Learn More"}
             buttonLink={"/learn-more"}
+            />
+            <ContactForm
             />
       </>
   );
