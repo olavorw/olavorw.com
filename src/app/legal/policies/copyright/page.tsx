@@ -97,12 +97,13 @@ export default function CopyrightPolicy() {
         centered={true}
       />
       <UnifiedSection
-        title={"5. This website's License Information"}
+        title={"5. My websites' License Information"}
         description={
           'The following information applies to the content on this website, olavorw.com.'
         }
         content={
-          'My website, 4934.tech, and its content are fully open source and distributed under the Apache License. 2.0. You can find the full text of the license' +
+          'My websites, including, olavorw.com (this website), and 4934.tech, and its content are fully open source and distributed under the Apache License. 2.0. You can' +
+          ' find the full text of the license' +
           " linked below. You are free to use, modify, and distribute my website's content in accordance with the terms of the Apache License 2.0. \n What this means is" +
           " when using my website's content, you must include the attribution stated above.\nWhile most of our website can be made open source, some components may be " +
           'proprietary or have different licensing terms. Please refer to the individual project repositories or contact us for more information.'
