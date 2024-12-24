@@ -6,16 +6,26 @@ export async function POST(request: NextRequest) {
   try {
     const { email, firstName, lastName, company, message } =
       await request.json();
+
     const mailgunDomain = process.env.MAILGUN_DOMAIN || '';
     const mailgunApiKey = process.env.MAILGUN_API_KEY || '';
     const recipientEmails = process.env.RECIPIENT_EMAILS || '';
     const mailgunSender = process.env.MAILGUN_SENDER_EMAIL || '';
 
-    const from = `Contact Olav \"Olavorw\" <${mailgunSender}>`;
+    if (
+      !mailgunDomain ||
+      !mailgunApiKey ||
+      !recipientEmails ||
+      !mailgunSender
+    ) {
+      throw new Error('Missing required environment variables.');
+    }
+
+    const from = `Contact Olav "Olavorw" <${mailgunSender}>`;
     const subject = `${firstName} ${lastName} at ${company}, ${email} - olavorw.com Contact Form Submission`;
     const bodyText = `${message}\n\nThis message was sent from the contact form on olavorw.com in accordance with the privacy policy (https://olavorw.com/policies/privacy).`;
 
-    const formData = new FormData();
+    const formData = new URLSearchParams();
     formData.append('from', from);
     formData.append('to', recipientEmails);
     formData.append('cc', email);
@@ -29,20 +39,23 @@ export async function POST(request: NextRequest) {
         method: 'POST',
         headers: {
           Authorization: `Basic ${btoa(`api:${mailgunApiKey}`)}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: formData,
+        body: formData.toString(),
       }
     );
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Mailgun Error:', errorText);
-      // noinspection ExceptionCaughtLocallyJS
-      throw new Error(`Mailgun API returned status ${response.status}`);
+      console.error('Mailgun API Error:', errorText);
+      throw new Error(
+        `Mailgun API returned status ${response.status}: ${errorText}`
+      );
     }
 
-    return NextResponse.json({ status: 200 });
-  } catch (error: unknown) {
+    return NextResponse.json({ status: 'success' }, { status: 200 });
+  } catch (error) {
+    console.error('Error in POST handler:', error);
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
