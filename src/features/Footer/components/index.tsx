@@ -110,6 +110,7 @@ export default function Footer() {
     return () => clearTimeout(timer);
   }, []);
 
+  // noinspection SuspiciousTypeOfGuard
   return (
     <motion.footer
       ref={footerRef}

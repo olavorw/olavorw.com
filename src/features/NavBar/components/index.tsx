@@ -459,6 +459,7 @@ const col3: MenuItem[] = [
     icon: BriefcaseIcon,
   },
 ];
+// noinspection JSDeprecatedSymbols
 const col3CTA: MenuCTAItem[] = [
   {
     name: 'GitHub Profile ;)',
