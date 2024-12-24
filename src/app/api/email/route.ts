@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const recipientEmails = process.env.RECIPIENT_EMAILS || '';
     const mailgunSender = process.env.MAILGUN_SENDER_EMAIL || '';
 
-    const from = `Contact Olav // Olavorw <${mailgunSender}>`;
+    const from = `Contact Olav "Olavorw" <${mailgunSender}>`;
     const subject = `${firstName} ${lastName} at ${company}, ${email} - Olavorw Contact Form Submission`;
     const bodyText = `${message}\n\nThis message was sent from the contact form on olavorw.com in accordance with the privacy policy (https://olavorw.com/legal/policies/privacy).`;
 
@@ -43,8 +43,12 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ status: 200 });
   } catch (error: unknown) {
+    console.error('Detailed error:', error);
     if (error instanceof Error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json(
+        { error: error.message, stack: error.stack },
+        { status: 500 }
+      );
     }
     return NextResponse.json({ error: String(error) }, { status: 500 });
   }
