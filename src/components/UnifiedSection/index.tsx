@@ -30,7 +30,7 @@ interface Feature {
 
 interface UnifiedSectionProps {
   tagline?: string;
-  title: string;
+  title?: string;
   description?: string;
   imageSrc?: string;
   imageAlt?: string;
