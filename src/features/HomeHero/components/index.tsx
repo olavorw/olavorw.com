@@ -51,7 +51,7 @@ export default function HomeHero() {
             >
               Pioneering open source.{' '}
               <a
-                href="#"
+                href="https://olavorw.com/aboutme"
                 className={`${baseClasses} font-semibold text-transparent bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text`}
                 style={glowStyle}
               >
@@ -108,7 +108,7 @@ export default function HomeHero() {
               Hello World, I&apos;m Olav, a full stack software developer,
               hardware enthusiast, entrepreneur, and founder of 4934 Tech. You
               might know me as &quot;Olavorw&quot;. I am a pioneer of the open
-              source community.
+              source community. I will help build the future!
             </motion.p>
 
             <motion.div
@@ -118,7 +118,7 @@ export default function HomeHero() {
               transition={{ delay: 0.6, duration: 0.5 }}
             >
               <motion.a
-                href="https://github.com/4934tech/ultraagent"
+                href="https://olavorw.com/cta/letsbuild"
                 className={`${baseClasses} ${hoverClasses} rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
                 whileHover={{
                   scale: 1.05,
@@ -131,7 +131,7 @@ export default function HomeHero() {
               </motion.a>
 
               <motion.a
-                href="#"
+                href="https://olavorw.com/projects"
                 className={`${baseClasses} ${hoverClasses} group flex items-center gap-x-2 text-sm/6 font-semibold text-white`}
                 whileHover={{ scale: 1.05, x: 5 }}
               >
