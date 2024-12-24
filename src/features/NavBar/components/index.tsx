@@ -31,16 +31,20 @@ import {
   ArrowPathIcon,
   ArrowRightIcon,
   Bars3Icon,
-  ChartPieIcon,
   ChevronDownIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
+  MicrophoneIcon,
   ShieldCheckIcon,
-  SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
-import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
-import { AppWindowIcon, GalleryHorizontal } from 'lucide-react';
+import {
+  AppWindowIcon,
+  Bot,
+  Brain,
+  GalleryHorizontal,
+  List,
+  Tally4Icon,
+  UserRoundPlus,
+} from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import {
   DesktopMenuProps,
@@ -468,39 +472,39 @@ const col2CTA: MenuCTAItem[] = [
 
 const col1: MenuItem[] = [
   {
-    name: 'Analytics',
-    description: 'Get a better understanding of your traffic',
+    name: 'UltraAgent',
+    description: 'A limitless AI bot which controls the real world',
     href: '#',
-    icon: ChartPieIcon,
+    icon: Bot,
   },
   {
-    name: 'Engagement',
-    description: 'Speak directly to your customers',
+    name: '4934.tech',
+    description: 'The official 4934.tech website',
     href: '#',
-    icon: CursorArrowRaysIcon,
+    icon: AppWindowIcon,
   },
   {
-    name: 'Security',
-    description: 'Your customers data will be safe and secure',
+    name: 'VC1',
+    description: 'The most powerful AI voice changer',
     href: '#',
-    icon: FingerPrintIcon,
+    icon: MicrophoneIcon,
   },
   {
-    name: 'Integrations',
-    description: 'Connect with third-party tools',
+    name: 'StrongerMind',
+    description: 'A mental health app',
     href: '#',
-    icon: SquaresPlusIcon,
+    icon: Brain,
   },
   {
-    name: 'Automations',
-    description: 'Build strategic funnels that will convert',
+    name: '4934',
+    description: 'The open source, community run 4934 tech organization',
     href: '#',
-    icon: ArrowPathIcon,
+    icon: Tally4Icon,
   },
 ];
 const col1CTA: MenuCTAItem[] = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  { name: 'All Projects', href: '#', icon: List },
+  { name: 'Contribute', href: '#', icon: UserRoundPlus },
 ];
 
 export default function NavBar() {
@@ -576,7 +580,7 @@ export default function NavBar() {
           blur={blur}
         />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavItem label="Join Us" href="#" hasArrow />
+          <NavItem label="Let's Build" href="#" hasArrow />
         </div>
       </motion.nav>
       <AnimatePresence>

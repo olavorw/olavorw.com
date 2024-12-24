@@ -127,7 +127,7 @@ export default function HomeHero() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Join Us
+                Let&apos;s Build
               </motion.a>
 
               <motion.a
