@@ -17,8 +17,7 @@ limitations under the License.
 'use client';
 
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import Animated from '@/features/Animator/components';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   Dialog,
   DialogPanel,
@@ -161,7 +160,7 @@ function PopoverMenu({
             {open && (
               <PopoverPanel
                 static
-                as={Animated}
+                as={motion.div}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -179,7 +178,7 @@ function PopoverMenu({
               >
                 <div className="p-4">
                   {items.map((item: MenuItem, index) => (
-                    <Animated
+                    <motion.div
                       key={item.name}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -208,14 +207,13 @@ function PopoverMenu({
                           {item.description}
                         </p>
                       </div>
-                    </Animated>
+                    </motion.div>
                   ))}
                 </div>
                 {ctaItems && (
                   <div className="grid grid-cols-2 divide-x divide-slate-900/5">
                     {ctaItems.map((item: MenuCTAItem, index) => (
-                      <Animated
-                        as="button"
+                      <motion.a
                         key={item.name}
                         href={item.href}
                         className={`${baseClasses} ${hoverClasses} group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white`}
@@ -231,7 +229,7 @@ function PopoverMenu({
                           className="size-5 flex-none text-white transition-colors duration-200 ease-in-out group-hover:text-[#6717cd]"
                         />
                         {item.name}
-                      </Animated>
+                      </motion.a>
                     ))}
                   </div>
                 )}
@@ -268,7 +266,7 @@ function DesktopMenu({
   return (
     <PopoverGroup className="hidden lg:flex lg:gap-x-12">
       {menuItems.map((item, index) => (
-        <Animated
+        <motion.div
           key={item.label}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -291,7 +289,7 @@ function DesktopMenu({
               col3CTA={col3CTA}
             />
           )}
-        </Animated>
+        </motion.div>
       ))}
     </PopoverGroup>
   );
@@ -328,7 +326,7 @@ function MobileMenu({
     <AnimatePresence>
       {isOpen && (
         <Dialog
-          as={Animated}
+          as={motion.div}
           className="relative z-50 lg:hidden"
           onClose={onClose}
           open={isOpen}
@@ -336,7 +334,7 @@ function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <Animated
+          <motion.div
             className="fixed inset-0 bg-slate-700/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -346,7 +344,7 @@ function MobileMenu({
           <div className="fixed inset-0 overflow-hidden">
             <div className="absolute inset-0 overflow-hidden">
               <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                <Animated
+                <motion.div
                   className="pointer-events-auto w-screen max-w-md"
                   initial={{ x: '100%' }}
                   animate={{ x: 0 }}
@@ -364,8 +362,7 @@ function MobileMenu({
                     <div className="px-6 pt-6 pb-4">
                       <div className="flex items-center justify-between">
                         <Logo />
-                        <Animated
-                          as="button"
+                        <motion.button
                           type="button"
                           className="rounded-md text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                           onClick={onClose}
@@ -374,50 +371,47 @@ function MobileMenu({
                         >
                           <span className="sr-only">Close panel</span>
                           <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                        </Animated>
+                        </motion.button>
                       </div>
                     </div>
                     <div className="relative mt-6 flex-1 px-6">
                       <div className="space-y-4">
                         <DisclosureMenu label="Solutions" items={col1WithCTA} />
-                        <Animated
-                          as="a"
+                        <motion.a
                           href="#"
                           className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           Gallery
-                        </Animated>
+                        </motion.a>
                         <DisclosureMenu
                           label="Hackathons"
                           items={col2WithCTA}
                         />
-                        <Animated
-                          as="a"
+                        <motion.a
                           href="#"
                           className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           About
-                        </Animated>
+                        </motion.a>
                         <DisclosureMenu label="Projects" items={col3WithCTA} />
                       </div>
                     </div>
                     <div className="border-t border-slate-400/50 px-6 py-6">
-                      <Animated
-                        as="a"
+                      <motion.a
                         href="#"
                         className={`${baseClasses} ${hoverClasses} block rounded-lg py-2.5 text-base/7 font-semibold text-slate-400`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         Log in
-                      </Animated>
+                      </motion.a>
                     </div>
                   </DialogPanel>
-                </Animated>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -529,15 +523,13 @@ export default function NavBar() {
   }, [handleScroll]);
 
   return (
-    <Animated
-      as="header"
+    <motion.header
       className="fixed top-0 left-0 right-0 z-40 px-4 py-4 transition-all duration-300 ease-in-out"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <Animated
-        as="nav"
+      <motion.nav
         aria-label="Global"
         className="border-white/5 border mx-auto flex max-w-[1400px] items-center justify-between sm:rounded-3xl py-2 px-6 transition-all duration-300 ease-in-out"
         style={{
@@ -549,7 +541,7 @@ export default function NavBar() {
         whileHover={{ scale: 1.01, ...hoverGlowStyle }}
         transition={{ duration: 0.3 }}
       >
-        <Animated
+        <motion.div
           className="flex lg:flex-1 transition-transform duration-300 ease-in-out hover:scale-105 hover:filter hover:drop-shadow-glow"
           whileHover={{
             scale: 1.05,
@@ -557,10 +549,9 @@ export default function NavBar() {
           }}
         >
           <Logo />
-        </Animated>
+        </motion.div>
         <div className="flex lg:hidden">
-          <Animated
-            as="button"
+          <motion.button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-all duration-300 ease-in-out ${opacity > 0.5 ? 'text-slate-300' : 'text-slate-700'} hover:text-[#4844e4]`}
@@ -572,7 +563,7 @@ export default function NavBar() {
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="size-6" />
-          </Animated>
+          </motion.button>
         </div>
         <DesktopMenu
           col1={col1}
@@ -587,7 +578,7 @@ export default function NavBar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <NavItem label="Join Us" href="#" hasArrow />
         </div>
-      </Animated>
+      </motion.nav>
       <AnimatePresence>
         {mobileMenuOpen && (
           <MobileMenu
@@ -604,6 +595,6 @@ export default function NavBar() {
           />
         )}
       </AnimatePresence>
-    </Animated>
+    </motion.header>
   );
 }

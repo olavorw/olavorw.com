@@ -22,9 +22,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 import { Github, Gitlab, Mail, Triangle, Twitter, Youtube } from 'lucide-react';
-import { useInView } from 'framer-motion';
-import AnimationToggleLink from '@/features/Animator/components/AnimationToggleLink';
-import Animated from '@/features/Animator/components';
+import { useInView, motion } from 'framer-motion';
 
 const baseClasses =
   'flex items-center gap-x-1 text-sm/6 font-semibold transition-all duration-200 ease-in-out group';
@@ -93,15 +91,14 @@ export default function Footer() {
   }, []);
 
   return (
-    <Animated
-      as="footer"
+    <motion.footer
       ref={footerRef}
       className="px-6 py-8 mt-auto"
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <Animated
+      <motion.div
         className="border-white/5 border mx-auto max-w-[1400px] sm:rounded-3xl transition-all duration-500 ease-in-out"
         style={{
           background: `linear-gradient(to right, rgba(103, 23, 205, ${0.1 * opacity + 0.05}), rgba(40, 113, 250, ${0.1 * opacity + 0.05}))`,
@@ -116,7 +113,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-12">
             {/* Logo and Description Column */}
             <div className="col-span-full lg:col-span-4">
-              <Animated
+              <motion.div
                 className="mb-6 transition-transform duration-300 ease-in-out hover:scale-105 hover:filter hover:drop-shadow-glow"
                 whileHover={{
                   scale: 1.05,
@@ -124,24 +121,23 @@ export default function Footer() {
                 }}
               >
                 <Logo />
-              </Animated>
-              <Animated
-                as="p"
+              </motion.div>
+              <motion.p
                 className="text-slate-300 text-sm leading-relaxed max-w-xs"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
                 I do cool nerdy stuff! よい一日を！
-              </Animated>
-              <Animated
+              </motion.p>
+              <motion.div
                 className="mt-6 flex gap-6"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
                 {socialIcons.map(({ Icon, href, label }) => (
-                  <Animated
+                  <motion.div
                     key={label}
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{
@@ -154,14 +150,14 @@ export default function Footer() {
                       <Icon className="h-5 w-5 text-slate-400 transition-all duration-200 ease-in-out group-hover:text-[#4844e4] group-hover:filter group-hover:drop-shadow-glow" />
                       <span className="sr-only">{label}</span>
                     </Link>
-                  </Animated>
+                  </motion.div>
                 ))}
-              </Animated>
+              </motion.div>
             </div>
 
             {/* Footer Sections */}
             {footerSections.map((section, sectionIndex) => (
-              <Animated
+              <motion.div
                 key={section.title}
                 className="sm:col-span-1 lg:col-span-2"
                 initial={{ opacity: 0, y: 20 }}
@@ -175,8 +171,7 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {section.items.map((item, itemIndex) => (
-                    <Animated
-                      as="li"
+                    <motion.li
                       key={typeof item === 'string' ? item : item.name}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -189,22 +184,21 @@ export default function Footer() {
                       >
                         {typeof item === 'string' ? item : item.name}
                       </Link>
-                    </Animated>
+                    </motion.li>
                   ))}
                 </ul>
-              </Animated>
+              </motion.div>
             ))}
           </div>
 
           {/* Copyright */}
-          <Animated
+          <motion.div
             className="mt-16 border-t border-slate-800 pt-8 flex gap-3"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
           >
-            <Animated
-              as="a"
+            <motion.a
               href="https://olavorw.com/policies/copyright"
               className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
               style={glowStyle}
@@ -212,19 +206,10 @@ export default function Footer() {
             >
               © {new Date().getFullYear()} Olav &quot;Olavorw&quot; Sharma, All
               Rights Reserved.
-            </Animated>
-            <Animated
-              href="https://olavorw.com/policies/copyright"
-              className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
-              style={glowStyle}
-              whileHover={{ scale: 1.05 }}
-            >
-              •
-            </Animated>
-            <AnimationToggleLink />
-          </Animated>
+            </motion.a>
+          </motion.div>
         </div>
-      </Animated>
-    </Animated>
+      </motion.div>
+    </motion.footer>
   );
 }
