@@ -61,11 +61,11 @@ export async function POST(request: NextRequest) {
 
     const formData = new FormData();
     formData.append('from', from);
-    formData.append('to', recipientEmails || '');
-    formData.append('cc', email);
+    if (recipientEmails) formData.append('to', recipientEmails);
+    if (email) formData.append('cc', email);
     formData.append('subject', subject);
     formData.append('text', bodyText);
-    formData.append('h:Reply-To', email);
+    if (email) formData.append('h:Reply-To', email);
 
     console.log('FormData:', {
       from,

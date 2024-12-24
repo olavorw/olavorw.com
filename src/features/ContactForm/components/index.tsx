@@ -72,13 +72,20 @@ const ContactForm: FC = () => {
     if (agreed) {
       setIsEmailSent(false);
       setEmailError(null);
-      const success = await sendEmail(data);
-      if (success) {
-        setIsEmailSent(true);
-        reset();
-        setAgreed(false);
-      } else {
-        setEmailError('Failed to send email. Please try again later.');
+      try {
+        const { success, message } = await sendEmail(data);
+        if (success) {
+          setIsEmailSent(true);
+          reset();
+          setAgreed(false);
+        } else {
+          setEmailError(
+            message || 'Failed to send email. Please try again later.'
+          );
+        }
+      } catch (error) {
+        console.error('Error sending email:', error);
+        setEmailError('An unexpected error occurred. Please try again later.');
       }
     }
   };
