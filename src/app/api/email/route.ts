@@ -3,16 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
-  const origin = request.headers.get('origin');
-  const allowedOrigins = [
-    'https://olavorw.com',
-    'https://www.olavorw.com',
-    'http://localhost:3000',
-  ];
   const corsHeaders = {
-    'Access-Control-Allow-Origin': allowedOrigins.includes(origin || '')
-      ? origin || ''
-      : allowedOrigins[0],
+    'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   };
@@ -25,7 +17,6 @@ export async function POST(request: NextRequest) {
     const { email, firstName, lastName, company, message } =
       await request.json();
 
-    // Log the received data for debugging
     console.log('Received form data:', {
       email,
       firstName,
@@ -39,31 +30,34 @@ export async function POST(request: NextRequest) {
     const recipientEmails = process.env.RECIPIENT_EMAILS;
     const mailgunSender = process.env.MAILGUN_SENDER_EMAIL;
 
-    // Check if all required environment variables are set
-    if (
-      !mailgunDomain ||
-      !mailgunApiKey ||
-      !recipientEmails ||
-      !mailgunSender
-    ) {
-      console.error('Missing required environment variables');
+    // Check environment variables
+    const missingVars = [];
+    if (!mailgunDomain) missingVars.push('MAILGUN_DOMAIN');
+    if (!mailgunApiKey) missingVars.push('MAILGUN_API_KEY');
+    if (!recipientEmails) missingVars.push('RECIPIENT_EMAILS');
+    if (!mailgunSender) missingVars.push('MAILGUN_SENDER_EMAIL');
+
+    if (missingVars.length > 0) {
+      console.error(`Missing environment variables: ${missingVars.join(', ')}`);
       return NextResponse.json(
-        { error: 'Server configuration error' },
+        {
+          error: `Server configuration error: Missing ${missingVars.join(', ')}`,
+        },
         { status: 500, headers: corsHeaders }
       );
     }
 
-    const from = `Contact Olav "Olavorw" <${mailgunSender}>`;
+    const from = `Contact olavorw.com <${mailgunSender}>`;
     const subject = `${firstName} ${lastName} at ${company}, ${email} - Olav "Olavorw" Contact Form Submission`;
     const bodyText = `${message}\n\nThis message was sent from the contact form on olavorw.com in accordance with the privacy policy (https://olavorw.com/legal/policies/privacy).`;
 
     const formData = new FormData();
     formData.append('from', from);
-    formData.append('to', recipientEmails);
-    formData.append('cc', email);
+    formData.append('to', recipientEmails ?? '');
+    formData.append('cc', email ?? '');
     formData.append('subject', subject);
     formData.append('text', bodyText);
-    formData.append('h:Reply-To', email);
+    formData.append('h:Reply-To', email ?? '');
 
     console.log('Sending request to Mailgun');
     const response = await fetch(
