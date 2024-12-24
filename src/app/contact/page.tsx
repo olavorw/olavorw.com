@@ -1,5 +1,5 @@
 import UnifiedSection from '@/components/UnifiedSection';
-import ContactForm from '@/features/ContactForm/components';
+import ContactForm from '../../components/ContactForm';
 
 export default function Contact() {
   return (
