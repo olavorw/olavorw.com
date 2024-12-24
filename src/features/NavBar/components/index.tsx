@@ -28,22 +28,27 @@ import {
   PopoverPanel,
 } from '@headlessui/react';
 import {
-  ArrowPathIcon,
   ArrowRightIcon,
   Bars3Icon,
   ChevronDownIcon,
+  CpuChipIcon,
   MicrophoneIcon,
-  ShieldCheckIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import {
   AppWindowIcon,
+  AppWindowMacIcon,
   Bot,
   Brain,
   GalleryHorizontal,
+  GamepadIcon,
+  Github,
   List,
+  MessageSquare,
+  Star,
   Tally4Icon,
   UserRoundPlus,
+  Youtube,
 } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import {
@@ -259,9 +264,9 @@ function DesktopMenu({
   const menuItems = useMemo(
     () => [
       { label: 'Projects', items: col1, ctaItems: col1CTA },
-      { label: 'Gallery', href: '#' },
+      { label: 'Lab', href: 'https://lab.olavorw.com' },
       { label: 'About Me', items: col2, ctaItems: col2CTA },
-      { label: 'Example', href: '#' },
+      { label: 'Documentation', href: 'https://docs.olavorw.com' },
       { label: 'Showcase', items: col3, ctaItems: col3CTA },
     ],
     [col1, col1CTA, col2, col2CTA, col3, col3CTA]
@@ -428,83 +433,122 @@ function MobileMenu({
 const col3: MenuItem[] = [
   {
     name: 'Project Gallery',
-    description: 'A gallery of some of my favorite projects',
-    href: '/showcase/projectGallery',
+    description: 'A gallery of some of my most ambitious projects',
+    href: 'https://olavorw.com/showcase/project-gallery',
     icon: GalleryHorizontal,
   },
   {
     name: 'Web Components',
     description: "A showcase of my favorite web components I've developed",
-    href: '/showcase/web-components',
+    href: 'https://olavorw.com/showcase/web-components',
     icon: AppWindowIcon,
+  },
+  {
+    name: 'Games & VR',
+    description: 'My game development work, showcased',
+    href: 'https://olavorw.com/showcase/favorite-work',
+    icon: GamepadIcon,
   },
 ];
 const col3CTA: MenuCTAItem[] = [
-  { name: 'View All', href: '/showcase', icon: ArrowPathIcon },
+  {
+    name: 'GitHub Profile ;)',
+    href: 'https://github.com/olavorw',
+    icon: Github,
+  },
+  {
+    name: 'My Youtube',
+    href: 'https://youtube.com/@olavorw',
+    icon: Youtube,
+  },
 ];
 
 // noinspection SpellCheckingInspection
 const col2: MenuItem[] = [
   {
-    name: 'Winter 2024',
-    description: 'An online single-day hackathon',
-    href: 'col2/winter2024',
+    name: 'About Me',
+    description: 'A quick overview of me',
+    href: 'https://olavorw.com/aboutme',
     icon: Bars3Icon,
   },
   {
-    name: 'PwnPointed',
-    description: 'A security themed online hackathon.',
-    href: 'col2/pwnpointed',
-    icon: ShieldCheckIcon,
+    name: 'Software Journey',
+    description: 'My journey of what I love most now, software',
+    href: 'https://olavorw.com/aboutme/softwarejourney',
+    icon: AppWindowMacIcon,
   },
   {
-    name: 'XAutomation',
-    description: 'A multi-day in-person automation themed hackathon.',
+    name: 'Hardware Endeavors',
+    description: "Some cool hardware projects I've done",
+    href: 'https://olavorw.com/aboutme/hardwareendeavors',
+    icon: CpuChipIcon,
+  },
+  {
+    name: 'Game Development',
+    description: 'What got me from hardware to software, VR game development',
     href: 'col2/summer2024',
-    icon: XMarkIcon,
+    icon: GamepadIcon,
+  },
+  {
+    name: 'Favorite Projects',
+    description: 'Some of my favorite projects over the years',
+    href: 'https://olavorw.com/aboutme/favoriteprojects',
+    icon: Star,
   },
 ];
 
 const col2CTA: MenuCTAItem[] = [
-  { name: 'View Upcoming', href: 'col2/upcoming', icon: ArrowPathIcon },
-  { name: 'View All', href: 'col2', icon: ArrowPathIcon },
+  {
+    name: 'Contact Me',
+    href: 'https://olavorw.com/contact',
+    icon: MessageSquare,
+  },
+  { name: '4934', href: 'https://4934.tech', icon: Tally4Icon },
 ];
 
 const col1: MenuItem[] = [
   {
     name: 'UltraAgent',
     description: 'A limitless AI bot which controls the real world',
-    href: '#',
+    href: 'https://olavorw.com/projects/ultraagent',
     icon: Bot,
   },
   {
     name: '4934.tech',
     description: 'The official 4934.tech website',
-    href: '#',
+    href: 'https://olavorw.com/projects/4934tech',
     icon: AppWindowIcon,
   },
   {
     name: 'VC1',
     description: 'The most powerful AI voice changer',
-    href: '#',
+    href: 'https://olavorw.com/projects/vc1',
     icon: MicrophoneIcon,
   },
   {
     name: 'StrongerMind',
     description: 'A mental health app',
-    href: '#',
+    href: 'https://olavorw.com/projects/strongermind',
     icon: Brain,
   },
   {
     name: '4934',
     description: 'The open source, community run 4934 tech organization',
-    href: '#',
+    href: 'https://olavorw.com/projects/4934',
     icon: Tally4Icon,
   },
 ];
 const col1CTA: MenuCTAItem[] = [
-  { name: 'All Projects', href: '#', icon: List },
-  { name: 'Contribute', href: '#', icon: UserRoundPlus },
+  {
+    name: 'All Projects',
+    href: 'https://olavorw.com/projects/all',
+    icon: List,
+  },
+  {
+    name: 'Contribute',
+    href: 'https://olavorw.com/contribute',
+    icon: UserRoundPlus,
+  },
 ];
 
 export default function NavBar() {
