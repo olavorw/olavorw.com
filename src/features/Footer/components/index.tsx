@@ -210,8 +210,8 @@ export default function Footer() {
               style={glowStyle}
               whileHover={{ scale: 1.05 }}
             >
-              © {new Date().getFullYear()} Olav &quot;Olavorw&quot; Sharma, All
-              Rights Reserved.
+              © Copyright {new Date().getFullYear()} Olav &quot;Olavorw&quot;
+              Sharma, All Rights Reserved.
             </motion.a>
           </motion.div>
         </div>
