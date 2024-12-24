@@ -25,10 +25,12 @@ export async function POST(request: NextRequest) {
       message,
     });
 
-    const mailgunDomain = process.env.MAILGUN_DOMAIN;
-    const mailgunApiKey = process.env.MAILGUN_API_KEY;
-    const recipientEmails = process.env.RECIPIENT_EMAILS;
-    const mailgunSender = process.env.MAILGUN_SENDER_EMAIL;
+    // Access environment variables
+    const env = request.nextUrl.searchParams;
+    const mailgunDomain = env.get('MAILGUN_DOMAIN');
+    const mailgunApiKey = env.get('MAILGUN_API_KEY');
+    const recipientEmails = env.get('RECIPIENT_EMAILS');
+    const mailgunSender = env.get('MAILGUN_SENDER_EMAIL');
 
     // Check environment variables
     const missingVars = [];
@@ -54,10 +56,10 @@ export async function POST(request: NextRequest) {
     const formData = new FormData();
     formData.append('from', from);
     formData.append('to', recipientEmails || '');
-    formData.append('cc', email);
+    formData.append('cc', email || '');
     formData.append('subject', subject);
     formData.append('text', bodyText);
-    formData.append('h:Reply-To', email);
+    formData.append('h:Reply-To', email || '');
 
     console.log('Sending request to Mailgun');
     const response = await fetch(
