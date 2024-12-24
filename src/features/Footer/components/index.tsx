@@ -60,11 +60,19 @@ const footerSections = [
   },
   {
     title: 'Support',
-    items: ['Contact Me', 'Documentation', 'Guides'],
+    items: [
+      { name: 'Contact Me', href: 'https://olavorw.com/contact' },
+      { name: 'Documentation', href: 'https://docs.olavorw.com' },
+      { name: 'Guides', href: 'https://docs.olavorw.com/quickstart' },
+    ],
   },
   {
     title: 'Community',
-    items: ['4934', 'Blog', 'Contribute'],
+    items: [
+      { name: '4934', href: 'https://olavorw.com/4934' },
+      { name: 'Blog', href: 'https://olavorw.com/blog' },
+      { name: 'Contribute', href: 'https://olavorw.com/contribute' },
+    ],
   },
   {
     title: 'Legal',
