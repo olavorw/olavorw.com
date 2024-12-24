@@ -2,7 +2,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import UnifiedSection from '@/components/UnifiedSection';
 import Banner from '@/components/Banner';
 
-export default function webComponents() {
+export default function WebComponents() {
   return (
     <>
       <UnifiedSection
