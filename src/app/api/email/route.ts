@@ -3,6 +3,24 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
+  const origin = request.headers.get('origin');
+  const allowedOrigins = [
+    'https://olavorw.com',
+    'https://www.olavorw.com',
+    'http://localhost:3000',
+  ];
+  const corsHeaders = {
+    'Access-Control-Allow-Origin': allowedOrigins.includes(origin || '')
+      ? origin || ''
+      : allowedOrigins[0],
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  };
+
+  if (request.method === 'OPTIONS') {
+    return new NextResponse(null, { headers: corsHeaders });
+  }
+
   try {
     const { email, firstName, lastName, company, message } =
       await request.json();
@@ -12,7 +30,7 @@ export async function POST(request: NextRequest) {
     const mailgunSender = process.env.MAILGUN_SENDER_EMAIL || '';
 
     const from = `Contact Olav "Olavorw" <${mailgunSender}>`;
-    const subject = `${firstName} ${lastName} at ${company}, ${email} - Olavorw Contact Form Submission`;
+    const subject = `${firstName} ${lastName} at ${company}, ${email} - Olav "Olavorw" Contact Form Submission`;
     const bodyText = `${message}\n\nThis message was sent from the contact form on olavorw.com in accordance with the privacy policy (https://olavorw.com/legal/policies/privacy).`;
 
     const formData = new FormData();
@@ -37,19 +55,21 @@ export async function POST(request: NextRequest) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Mailgun Error:', errorText);
-      // noinspection ExceptionCaughtLocallyJS
-      throw new Error(`Mailgun API returned status ${response.status}`);
-    }
-
-    return NextResponse.json({ status: 200 });
-  } catch (error: unknown) {
-    console.error('Detailed error:', error);
-    if (error instanceof Error) {
       return NextResponse.json(
-        { error: error.message, stack: error.stack },
-        { status: 500 }
+        { error: `Mailgun API returned status ${response.status}` },
+        { status: 500, headers: corsHeaders }
       );
     }
-    return NextResponse.json({ error: String(error) }, { status: 500 });
+
+    return NextResponse.json(
+      { message: 'Email sent successfully' },
+      { headers: corsHeaders }
+    );
+  } catch (error: unknown) {
+    console.error('Detailed error:', error);
+    return NextResponse.json(
+      { error: 'An unexpected error occurred' },
+      { status: 500, headers: corsHeaders }
+    );
   }
 }
