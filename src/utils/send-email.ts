@@ -1,6 +1,8 @@
 import { FormData } from '@/features/ContactForm/components';
 
-export async function sendEmail(data: FormData): Promise<boolean> {
+export async function sendEmail(
+  data: FormData
+): Promise<{ success: boolean; message: string }> {
   const apiEndpoint = '/api/email';
 
   try {
@@ -17,20 +19,25 @@ export async function sendEmail(data: FormData): Promise<boolean> {
     if (contentType && contentType.indexOf('application/json') !== -1) {
       result = await response.json();
     } else {
-      // If the response is not JSON, treat it as text
       const text = await response.text();
       result = { error: text };
     }
 
     if (response.ok) {
       console.log('Email sent successfully:', result.message);
-      return true;
+      return { success: true, message: result.message };
     } else {
       console.error('Failed to send email:', result.error, result.details);
-      return false;
+      return {
+        success: false,
+        message: `Error: ${result.error}. Details: ${result.details || 'No additional details'}`,
+      };
     }
   } catch (err) {
     console.error('Error in sendEmail:', err);
-    return false;
+    return {
+      success: false,
+      message: `Unexpected error: ${err instanceof Error ? err.message : String(err)}`,
+    };
   }
 }
