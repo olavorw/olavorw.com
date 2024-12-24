@@ -1,5 +1,3 @@
-// noinspection JSDeprecatedSymbols
-
 /*
 Copyright 2024 Olav "Olavorw" Sharma (https://olavorw.com)
 
@@ -21,6 +19,7 @@ limitations under the License.
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
+// noinspection JSDeprecatedSymbols
 import { Github, Gitlab, Mail, Triangle, Twitter, Youtube } from 'lucide-react';
 import { useInView, motion } from 'framer-motion';
 
@@ -38,6 +37,7 @@ const hoverGlowStyle = {
   boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)',
 };
 
+// noinspection JSDeprecatedSymbols
 const socialIcons = [
   { Icon: Twitter, href: 'https://twitter.com/olavorw', label: 'X' },
   { Icon: Github, href: 'https://github.com/olavorw', label: 'GitHub' },
