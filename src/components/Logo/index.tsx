@@ -18,8 +18,8 @@ import Image from 'next/image';
 
 export function Logo() {
   return (
-    <a href="https://4934.tech" className="-m-1.5 p-1.5 group">
-      <span className="sr-only">4934</span>
+    <a href="https://olavorw.com" className="-m-1.5 p-1.5 group">
+      <span className="sr-only">olavorw.com</span>
       <div className="relative w-20 h-20 overflow-hidden">
         <Image
           src="/Logo/MainSquareTransparent.png"
