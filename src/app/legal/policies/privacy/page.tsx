@@ -35,8 +35,12 @@ export default function PrivacyPolicy() {
         centered={true}
         links={[
           {
-            name: 'Contact Me',
+            name: 'Contact Form',
             href: 'https://olavorw.com/contact',
+          },
+          {
+            name: 'Email Me',
+            href: 'mailto:olav@olavorw.com',
           },
         ]}
       />
