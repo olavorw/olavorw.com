@@ -9,16 +9,17 @@ export async function sendEmail(data: FormData): Promise<boolean> {
       body: JSON.stringify(data),
     });
 
+    const result = await response.json();
+
     if (response.ok) {
-      const result = await response.json();
-      console.log(result.message);
+      console.log('Email sent successfully:', result.message);
       return true;
     } else {
-      console.log('Failed to send email');
+      console.error('Failed to send email:', result.error);
       return false;
     }
   } catch (err) {
-    console.log(err);
+    console.error('Error in sendEmail:', err);
     return false;
   }
 }
