@@ -59,16 +59,25 @@ export default function AboutMe() {
             href: 'https://olavorw.com/contact',
           },
           {
-            name: '4934 Maker Community',
-            href: 'https://4934.tech',
-          },
-          {
-            name: 'GitHub',
-            href: 'https://github.com/olavorw',
-          },
-          {
-            name: "Let's build",
+            name: 'Software Journey',
             href: 'https://olavorw.com/cta/letsbuild',
+          },
+          {
+            name: 'Hardware Endeavors',
+            href: 'https://olavorw.com/aboutme/hardwareendeavors',
+          },
+
+          {
+            name: 'Game Development',
+            href: 'https://olavorw.com/aboutme/gamedevelopment',
+          },
+          {
+            name: 'Open Source',
+            href: 'https://olavrow.com/aboutme/opensource',
+          },
+          {
+            name: 'Favorite Projects',
+            href: 'https://4934.tech',
           },
         ]}
       />

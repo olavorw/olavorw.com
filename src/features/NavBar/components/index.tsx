@@ -40,6 +40,8 @@ import {
   AppWindowMacIcon,
   Bot,
   Brain,
+  BriefcaseIcon,
+  Code2Icon,
   GalleryHorizontal,
   GamepadIcon,
   Github,
@@ -449,6 +451,12 @@ const col3: MenuItem[] = [
     href: 'https://olavorw.com/showcase/favorite-work',
     icon: GamepadIcon,
   },
+  {
+    name: 'Favorite Work',
+    description: 'Some of my favorite work over the years',
+    href: 'https://olavorw.com/showcase/favorite-work',
+    icon: BriefcaseIcon,
+  },
 ];
 const col3CTA: MenuCTAItem[] = [
   {
@@ -486,8 +494,14 @@ const col2: MenuItem[] = [
   {
     name: 'Game Development',
     description: 'What got me from hardware to software, VR game development',
-    href: 'col2/summer2024',
+    href: 'https://olavorw.com/aboutme/gamedevelopment',
     icon: GamepadIcon,
+  },
+  {
+    name: 'Open Source',
+    description: 'My journey into the open source world',
+    href: 'https://olavorw.com/aboutme/opensource',
+    icon: Code2Icon,
   },
   {
     name: 'Favorite Projects',

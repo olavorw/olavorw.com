@@ -49,16 +49,22 @@ const socialIcons = [
 
 const footerSections = [
   {
-    title: 'Solutions',
-    items: ['Marketing', 'Analytics', 'Automation', 'Commerce', 'Insights'],
+    title: 'Quick Links',
+    items: [
+      { name: 'Projects', href: 'https://olavorw.com/projects' },
+      { name: 'Lab', href: 'https://lab.olavorw.com' },
+      { name: 'About Me', href: 'https://olavorw.com/aboutme' },
+      { name: 'Documentation', href: 'https://docs.olavorw.com' },
+      { name: 'Showcase', href: 'https://olavorw.com/showcase' },
+    ],
   },
   {
     title: 'Support',
-    items: ['Submit ticket', 'Documentation', 'Guides'],
+    items: ['Contact Me', 'Documentation', 'Guides'],
   },
   {
     title: 'Community',
-    items: ['About', 'Blog', 'Join Us', 'Press'],
+    items: ['4934', 'Blog', 'Contribute'],
   },
   {
     title: 'Legal',
