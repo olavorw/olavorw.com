@@ -580,7 +580,11 @@ export default function NavBar() {
           blur={blur}
         />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavItem label="Let's Build" href="#" hasArrow />
+          <NavItem
+            label="Let's Build"
+            href="https://olavorw.com/cta/letsbuild"
+            hasArrow
+          />
         </div>
       </motion.nav>
       <AnimatePresence>
