@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const recipientEmails = process.env.RECIPIENT_EMAILS || '';
     const mailgunSender = process.env.MAILGUN_SENDER_EMAIL || '';
 
-    const from = `Contact Olav "Olavorw" <${mailgunSender}>`;
+    const from = `Contact Olav \"Olavorw\" <${mailgunSender}>`;
     const subject = `${firstName} ${lastName} at ${company}, ${email} - olavorw.com Contact Form Submission`;
     const bodyText = `${message}\n\nThis message was sent from the contact form on olavorw.com in accordance with the privacy policy (https://olavorw.com/policies/privacy).`;
 
