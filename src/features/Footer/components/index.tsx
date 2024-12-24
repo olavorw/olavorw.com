@@ -63,10 +63,16 @@ const footerSections = [
   {
     title: 'Legal',
     items: [
-      { name: 'Terms of Service', href: 'https://olavorw.com/policies/tos' },
-      { name: 'Privacy Policy', href: 'https://olavorw.com/policies/privacy' },
       {
-        name: 'Copyright Information',
+        name: 'Terms of Service',
+        href: 'https://olavorw.com/legal/policies/tos',
+      },
+      {
+        name: 'Privacy Policy',
+        href: 'https://olavorw.com/legal/policies/privacy',
+      },
+      {
+        name: 'Copyright Policy',
         href: 'https://olavorw.com/policies/copyright',
       },
       {
