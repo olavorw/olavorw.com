@@ -6,10 +6,20 @@ export default function LetsBuild() {
     <>
       <UnifiedSection
         title={"We're Building The Future"}
-        tagline={'Join me, and let’s build something amazing together!'}
+        tagline={"Let's build our own future"}
         description={
           'I’m always looking for new opportunities to collaborate, learn, and grow. If you have an idea, project,' +
           ' or opportunity you’d like to discuss, I’d love to hear from you!'
+        }
+        content={
+          'Let’s build something amazing together! I love everything from hardware to software, and everything in between!' +
+          "\nI'd like to make new friends on the way, and I will change the world with you! I'm a pioneer of the future," +
+          "starting with open-source projects, and I'd love to see you there!\nEven if it's a small, or 'stupid' project," +
+          "I'd love to work on it. If it's something cool, like an AI cat picture generator, I'm here for it. I'd love to get" +
+          'involved with some cool stuff like that.\nI love the open-source community, and I want to give back to it. I want to' +
+          ' get involved with as many projects as I can to change the world for the better. Quite an ambitious goal, but I will' +
+          ' accomplish it!\nKeep reading to learn more about how we can work together to build a better future for us, controlled' +
+          ' by the community!'
         }
         links={[
           {
@@ -25,6 +35,8 @@ export default function LetsBuild() {
             href: 'https://github.com/olavorw',
           },
         ]}
+        imageSrc={'/Stock/EpicCyberSystems.webp'}
+        imageAlt={'Epic Cyber Systems'}
       />
       <UnifiedSection
         centered={true}
