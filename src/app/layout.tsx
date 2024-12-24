@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     siteName: 'olavorw.com',
     images: [
       {
-        url: 'https://4934.tech/Logo/4934sqbd.png',
+        url: 'https://olavorw.com/Logo/CompleteGradientSquare.png',
         width: 1024,
         height: 1024,
         alt: '4934 Tech Index',
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     title: "Olav's wonderful website.",
     description:
       'I\'m Olav "Olavorw" Sharma. I do cool nerdy stuff. In more detail, I\'m a full stack software developer, hardware enthusiast, entrepreneur, and founder of 4934 Tech.',
-    images: ['https://4934.tech/Logo/4934sqbd.png'],
+    images: ['https://olavorw.com/Logo/CompleteGradientSquare.png'],
     creator: '@4934tech',
   },
 };
