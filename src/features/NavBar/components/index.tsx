@@ -35,6 +35,7 @@ import {
   MicrophoneIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
+// noinspection JSDeprecatedSymbols
 import {
   AppWindowIcon,
   AppWindowMacIcon,
