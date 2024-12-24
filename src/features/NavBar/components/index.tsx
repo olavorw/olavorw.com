@@ -17,8 +17,7 @@ limitations under the License.
 'use client';
 
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { AnimationProvider } from '@/features/Animator/context/AnimationContext';
+import { AnimatePresence } from 'framer-motion';
 import Animated from '@/features/Animator/components';
 import {
   Dialog,
@@ -151,98 +150,97 @@ function PopoverMenu({
   blur,
 }: PopoverMenuProps) {
   return (
-    <AnimationProvider>
-      <Popover className="relative">
-        {({ open }) => (
-          <>
-            <PopoverButton as="div">
-              <NavItem label={label} isOpen={open} hasDropdown />
-            </PopoverButton>
+    <Popover className="relative">
+      {({ open }) => (
+        <>
+          <PopoverButton as="div">
+            <NavItem label={label} isOpen={open} hasDropdown />
+          </PopoverButton>
 
-            <AnimatePresence>
-              {open && (
-                <PopoverPanel
-                  static
-                  as={Animated}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 } as never}
-                  className={`border-white/5 border absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl shadow-lg`}
-                  style={{
-                    backgroundColor: `rgba(100, 116, 139, ${0.05 * opacity + 0.05})`,
-                    backdropFilter: `blur(${blur}px)`,
-                    WebkitBackdropFilter: `blur(${blur}px)`,
-                    boxShadow:
-                      '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                    transition: 'box-shadow 0.3s ease-in-out',
-                  }}
-                  whileHover={hoverGlowStyle}
-                >
-                  <div className="p-4">
-                    {items.map((item: MenuItem, index) => (
+          <AnimatePresence>
+            {open && (
+              <PopoverPanel
+                static
+                as={Animated}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 } as never}
+                className={`border-white/5 border absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl shadow-lg`}
+                style={{
+                  backgroundColor: `rgba(100, 116, 139, ${0.05 * opacity + 0.05})`,
+                  backdropFilter: `blur(${blur}px)`,
+                  WebkitBackdropFilter: `blur(${blur}px)`,
+                  boxShadow:
+                    '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                  transition: 'box-shadow 0.3s ease-in-out',
+                }}
+                whileHover={hoverGlowStyle}
+              >
+                <div className="p-4">
+                  {items.map((item: MenuItem, index) => (
+                    <Animated
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: index * 0.05 }}
+                      className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-all duration-300 ease-in-out"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)',
+                      }}
+                    >
+                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-slate-900/10">
+                        <item.icon
+                          aria-hidden="true"
+                          className="size-6 text-slate-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out"
+                        />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href={item.href}
+                          className={`${baseClasses} ${hoverClasses} block font-semibold text-white`}
+                        >
+                          {item.name}
+                          <span className="absolute inset-0" />
+                        </a>
+                        <p className="mt-1 text-slate-400">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Animated>
+                  ))}
+                </div>
+                {ctaItems && (
+                  <div className="grid grid-cols-2 divide-x divide-slate-900/5">
+                    {ctaItems.map((item: MenuCTAItem, index) => (
                       <Animated
+                        as="button"
                         key={item.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2, delay: index * 0.05 }}
-                        className="group relative flex hover:bg-slate-500/5 items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:outline-white/5 hover:outline hover:outline-1 hover:border-white/10 transition-all duration-300 ease-in-out"
-                        whileHover={{
-                          scale: 1.05,
-                          boxShadow: '0 0 20px rgba(103, 23, 205, 0.3)',
+                        href={item.href}
+                        className={`${baseClasses} ${hoverClasses} group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.2,
+                          delay: 0.1 + index * 0.05,
                         }}
                       >
-                        <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-slate-500/15 group-hover:divide-slate-900/10">
-                          <item.icon
-                            aria-hidden="true"
-                            className="size-6 text-slate-300 group-hover:text-[#6717cd] transition-colors duration-200 ease-in-out"
-                          />
-                        </div>
-                        <div className="flex-auto">
-                          <a
-                            href={item.href}
-                            className={`${baseClasses} ${hoverClasses} block font-semibold text-white`}
-                          >
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </a>
-                          <p className="mt-1 text-slate-400">
-                            {item.description}
-                          </p>
-                        </div>
+                        <item.icon
+                          aria-hidden="true"
+                          className="size-5 flex-none text-white transition-colors duration-200 ease-in-out group-hover:text-[#6717cd]"
+                        />
+                        {item.name}
                       </Animated>
                     ))}
                   </div>
-                  {ctaItems && (
-                    <div className="grid grid-cols-2 divide-x divide-slate-900/5">
-                      {ctaItems.map((item: MenuCTAItem, index) => (
-                        <motion.a
-                          key={item.name}
-                          href={item.href}
-                          className={`${baseClasses} ${hoverClasses} group flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white`}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.2,
-                            delay: 0.1 + index * 0.05,
-                          }}
-                        >
-                          <item.icon
-                            aria-hidden="true"
-                            className="size-5 flex-none text-white transition-colors duration-200 ease-in-out group-hover:text-[#6717cd]"
-                          />
-                          {item.name}
-                        </motion.a>
-                      ))}
-                    </div>
-                  )}
-                </PopoverPanel>
-              )}
-            </AnimatePresence>
-          </>
-        )}
-      </Popover>
-    </AnimationProvider>
+                )}
+              </PopoverPanel>
+            )}
+          </AnimatePresence>
+        </>
+      )}
+    </Popover>
   );
 }
 
@@ -268,36 +266,34 @@ function DesktopMenu({
   );
 
   return (
-    <AnimationProvider>
-      <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-        {menuItems.map((item, index) => (
-          <Animated
-            key={item.label}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-          >
-            {item.href ? (
-              <NavItem label={item.label} href={item.href} />
-            ) : (
-              <PopoverMenu
-                label={item.label}
-                items={item.items!}
-                ctaItems={item.ctaItems}
-                opacity={opacity}
-                blur={blur}
-                col1={col1}
-                col1CTA={col1CTA}
-                col2={col2}
-                col2CTA={col2CTA}
-                col3={col3}
-                col3CTA={col3CTA}
-              />
-            )}
-          </Animated>
-        ))}
-      </PopoverGroup>
-    </AnimationProvider>
+    <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+      {menuItems.map((item, index) => (
+        <Animated
+          key={item.label}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.1 }}
+        >
+          {item.href ? (
+            <NavItem label={item.label} href={item.href} />
+          ) : (
+            <PopoverMenu
+              label={item.label}
+              items={item.items!}
+              ctaItems={item.ctaItems}
+              opacity={opacity}
+              blur={blur}
+              col1={col1}
+              col1CTA={col1CTA}
+              col2={col2}
+              col2CTA={col2CTA}
+              col3={col3}
+              col3CTA={col3CTA}
+            />
+          )}
+        </Animated>
+      ))}
+    </PopoverGroup>
   );
 }
 
@@ -329,109 +325,105 @@ function MobileMenu({
   );
 
   return (
-    <AnimationProvider>
-      <AnimatePresence>
-        {isOpen && (
-          <Dialog
-            as={Animated}
-            className="relative z-50 lg:hidden"
-            onClose={onClose}
-            open={isOpen}
+    <AnimatePresence>
+      {isOpen && (
+        <Dialog
+          as={Animated}
+          className="relative z-50 lg:hidden"
+          onClose={onClose}
+          open={isOpen}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <Animated
+            className="fixed inset-0 bg-slate-700/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-          >
-            <Animated
-              className="fixed inset-0 bg-slate-700/5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
+          />
 
-            <div className="fixed inset-0 overflow-hidden">
-              <div className="absolute inset-0 overflow-hidden">
-                <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                  <Animated
-                    className="pointer-events-auto w-screen max-w-md"
-                    initial={{ x: '100%' }}
-                    animate={{ x: 0 }}
-                    exit={{ x: '100%' }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          <div className="fixed inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <Animated
+                  className="pointer-events-auto w-screen max-w-md"
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '100%' }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                >
+                  <DialogPanel
+                    className="flex h-full flex-col overflow-y-scroll shadow-xl"
+                    style={{
+                      backdropFilter: `blur(${blur}px)`,
+                      WebkitBackdropFilter: `blur(${blur}px)`,
+                      backgroundColor: `rgba(50, 50, 50, ${opacity + 0.5})`,
+                    }}
                   >
-                    <DialogPanel
-                      className="flex h-full flex-col overflow-y-scroll shadow-xl"
-                      style={{
-                        backdropFilter: `blur(${blur}px)`,
-                        WebkitBackdropFilter: `blur(${blur}px)`,
-                        backgroundColor: `rgba(50, 50, 50, ${opacity + 0.5})`,
-                      }}
-                    >
-                      <div className="px-6 pt-6 pb-4">
-                        <div className="flex items-center justify-between">
-                          <Logo />
-                          <motion.button
-                            type="button"
-                            className="rounded-md text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                            onClick={onClose}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <span className="sr-only">Close panel</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                          </motion.button>
-                        </div>
+                    <div className="px-6 pt-6 pb-4">
+                      <div className="flex items-center justify-between">
+                        <Logo />
+                        <Animated
+                          as="button"
+                          type="button"
+                          className="rounded-md text-slate-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                          onClick={onClose}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <span className="sr-only">Close panel</span>
+                          <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                        </Animated>
                       </div>
-                      <div className="relative mt-6 flex-1 px-6">
-                        <div className="space-y-4">
-                          <DisclosureMenu
-                            label="Solutions"
-                            items={col1WithCTA}
-                          />
-                          <motion.a
-                            href="#"
-                            className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            Gallery
-                          </motion.a>
-                          <DisclosureMenu
-                            label="Hackathons"
-                            items={col2WithCTA}
-                          />
-                          <motion.a
-                            href="#"
-                            className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            About
-                          </motion.a>
-                          <DisclosureMenu
-                            label="Projects"
-                            items={col3WithCTA}
-                          />
-                        </div>
-                      </div>
-                      <div className="border-t border-slate-400/50 px-6 py-6">
-                        <motion.a
+                    </div>
+                    <div className="relative mt-6 flex-1 px-6">
+                      <div className="space-y-4">
+                        <DisclosureMenu label="Solutions" items={col1WithCTA} />
+                        <Animated
+                          as="a"
                           href="#"
-                          className={`${baseClasses} ${hoverClasses} block rounded-lg py-2.5 text-base/7 font-semibold text-slate-400`}
+                          className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          Log in
-                        </motion.a>
+                          Gallery
+                        </Animated>
+                        <DisclosureMenu
+                          label="Hackathons"
+                          items={col2WithCTA}
+                        />
+                        <Animated
+                          as="a"
+                          href="#"
+                          className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          About
+                        </Animated>
+                        <DisclosureMenu label="Projects" items={col3WithCTA} />
                       </div>
-                    </DialogPanel>
-                  </Animated>
-                </div>
+                    </div>
+                    <div className="border-t border-slate-400/50 px-6 py-6">
+                      <Animated
+                        as="a"
+                        href="#"
+                        className={`${baseClasses} ${hoverClasses} block rounded-lg py-2.5 text-base/7 font-semibold text-slate-400`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Log in
+                      </Animated>
+                    </div>
+                  </DialogPanel>
+                </Animated>
               </div>
             </div>
-          </Dialog>
-        )}
-      </AnimatePresence>
-    </AnimationProvider>
+          </div>
+        </Dialog>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -537,50 +529,70 @@ export default function NavBar() {
   }, [handleScroll]);
 
   return (
-    <AnimationProvider>
-      <motion.header
-        className="fixed top-0 left-0 right-0 z-40 px-4 py-4 transition-all duration-300 ease-in-out"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+    <Animated
+      as="header"
+      className="fixed top-0 left-0 right-0 z-40 px-4 py-4 transition-all duration-300 ease-in-out"
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <Animated
+        as="nav"
+        aria-label="Global"
+        className="border-white/5 border mx-auto flex max-w-[1400px] items-center justify-between sm:rounded-3xl py-2 px-6 transition-all duration-300 ease-in-out"
+        style={{
+          background: `linear-gradient(to right, rgba(103, 23, 205, ${0.1 * opacity + 0.05}), rgba(40, 113, 250, ${0.1 * opacity + 0.05}))`,
+          backdropFilter: `blur(${blur}px)`,
+          WebkitBackdropFilter: `blur(${blur}px)`,
+          boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`,
+        }}
+        whileHover={{ scale: 1.01, ...hoverGlowStyle }}
+        transition={{ duration: 0.3 }}
       >
-        <motion.nav
-          aria-label="Global"
-          className="border-white/5 border mx-auto flex max-w-[1400px] items-center justify-between sm:rounded-3xl py-2 px-6 transition-all duration-300 ease-in-out"
-          style={{
-            background: `linear-gradient(to right, rgba(103, 23, 205, ${0.1 * opacity + 0.05}), rgba(40, 113, 250, ${0.1 * opacity + 0.05}))`,
-            backdropFilter: `blur(${blur}px)`,
-            WebkitBackdropFilter: `blur(${blur}px)`,
-            boxShadow: `0 4px 6px -1px rgba(0, 0, 0, ${opacity * 0.1}), 0 2px 4px -1px rgba(0, 0, 0, ${opacity * 0.06})`,
+        <Animated
+          className="flex lg:flex-1 transition-transform duration-300 ease-in-out hover:scale-105 hover:filter hover:drop-shadow-glow"
+          whileHover={{
+            scale: 1.05,
+            filter: 'drop-shadow(0 0 10px rgba(72, 68, 228, 0.5))',
           }}
-          whileHover={{ scale: 1.01, ...hoverGlowStyle }}
-          transition={{ duration: 0.3 }}
         >
+          <Logo />
+        </Animated>
+        <div className="flex lg:hidden">
           <Animated
-            className="flex lg:flex-1 transition-transform duration-300 ease-in-out hover:scale-105 hover:filter hover:drop-shadow-glow"
+            as="button"
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-all duration-300 ease-in-out ${opacity > 0.5 ? 'text-slate-300' : 'text-slate-700'} hover:text-[#4844e4]`}
             whileHover={{
-              scale: 1.05,
+              scale: 1.1,
               filter: 'drop-shadow(0 0 10px rgba(72, 68, 228, 0.5))',
             }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Logo />
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon aria-hidden="true" className="size-6" />
           </Animated>
-          <div className="flex lg:hidden">
-            <motion.button
-              type="button"
-              onClick={() => setMobileMenuOpen(true)}
-              className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-all duration-300 ease-in-out ${opacity > 0.5 ? 'text-slate-300' : 'text-slate-700'} hover:text-[#4844e4]`}
-              whileHover={{
-                scale: 1.1,
-                filter: 'drop-shadow(0 0 10px rgba(72, 68, 228, 0.5))',
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="sr-only">Open main menu</span>
-              <Bars3Icon aria-hidden="true" className="size-6" />
-            </motion.button>
-          </div>
-          <DesktopMenu
+        </div>
+        <DesktopMenu
+          col1={col1}
+          col1CTA={col1CTA}
+          col2={col2}
+          col2CTA={col2CTA}
+          col3={col3}
+          col3CTA={col3CTA}
+          opacity={opacity}
+          blur={blur}
+        />
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <NavItem label="Join Us" href="#" hasArrow />
+        </div>
+      </Animated>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <MobileMenu
+            isOpen={mobileMenuOpen}
+            onClose={() => setMobileMenuOpen(false)}
             col1={col1}
             col1CTA={col1CTA}
             col2={col2}
@@ -590,27 +602,8 @@ export default function NavBar() {
             opacity={opacity}
             blur={blur}
           />
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <NavItem label="Join Us" href="#" hasArrow />
-          </div>
-        </motion.nav>
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <MobileMenu
-              isOpen={mobileMenuOpen}
-              onClose={() => setMobileMenuOpen(false)}
-              col1={col1}
-              col1CTA={col1CTA}
-              col2={col2}
-              col2CTA={col2CTA}
-              col3={col3}
-              col3CTA={col3CTA}
-              opacity={opacity}
-              blur={blur}
-            />
-          )}
-        </AnimatePresence>
-      </motion.header>
-    </AnimationProvider>
+        )}
+      </AnimatePresence>
+    </Animated>
   );
 }

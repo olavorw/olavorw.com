@@ -1,9 +1,16 @@
-import React from 'react';
-import { useAnimation } from '../context/AnimationContext';
+import React, { useState } from 'react';
+import { animationController } from '../animationController';
 import Animated from './index';
 
 const AnimationToggleLink: React.FC = () => {
-  const { animationsEnabled, toggleAnimations } = useAnimation();
+  const [animationsEnabled, setAnimationsEnabled] = useState(
+    animationController.animationsEnabled
+  );
+
+  const toggleAnimations = () => {
+    animationController.toggleAnimations();
+    setAnimationsEnabled(animationController.animationsEnabled); // Force re-render
+  };
 
   const baseClasses =
     'flex items-center gap-x-1 text-sm/6 font-semibold transition-all duration-200 ease-in-out group';
