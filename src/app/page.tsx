@@ -9,7 +9,7 @@ export default function Home() {
       <CallToAction
         imageHeight={400}
         imageWidth={600}
-        imageSource="https://placehold.co/600x400/png"
+        imageSource="https://placehold.co/600x400/black/gray/png"
         description={
           "This is my super duper awesome CTA component! It's so cool, you won't believe it!"
         }
