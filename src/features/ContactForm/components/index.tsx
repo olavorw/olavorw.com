@@ -213,7 +213,7 @@ const ContactForm: FC = () => {
             <Label className="text-sm text-gray-300">
               By selecting this, you agree to our{' '}
               <a
-                href="https://4934.tech/policies/privacy-policy"
+                href="https://olavorw.com/legal/policies/privacy"
                 className={`${baseClasses} ${hoverClasses} font-semibold text-transparent bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text`}
                 style={glowStyle}
               >
