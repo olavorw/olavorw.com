@@ -58,7 +58,7 @@ export default function WebComponents() {
           " my heart, so please give attribution under license rules and the copyright. If you're wondering, I usually" +
           ' license under the GNU General Public License (GPLv3). \n With all that said, enjoy the showcase!'
         }
-        imageSrc={'https://placehold.co/800x600/png'}
+        imageSrc={'/Screenshots/4934TechWebsite.png'}
         links={[
           {
             name: 'Component Repository',
