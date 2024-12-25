@@ -1,6 +1,17 @@
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import UnifiedSection from '@/components/UnifiedSection';
 import Banner from '@/components/Banner';
+import ContactForm from '@/components/ContactForm';
+import EpicCards from '@/components/EpicCards';
+import {
+  Angry,
+  BicepsFlexedIcon,
+  Brain,
+  Cog,
+  Flower,
+  IdCardIcon,
+  Mouse,
+} from 'lucide-react';
 
 export default function WebComponents() {
   return (
@@ -92,6 +103,9 @@ export default function WebComponents() {
         rightAligned={true}
         title={'Banner'}
         description={'A banner component to display important information'}
+        content={
+          'Made with care, this banner component is great for cookie banners, announcements, and more.'
+        }
       />
       <Banner
         mainTitle={"Olav's wonderful website."}
@@ -99,6 +113,112 @@ export default function WebComponents() {
         buttonText={'About Me'}
         buttonHref={'https://olavorw.com/aboutme'}
         showCased={true}
+      />
+      <UnifiedSection
+        topOfPage={false}
+        rightAligned={true}
+        title={'Contact Form'}
+        description={'A contact form component to get in touch with me'}
+        content={
+          "This contact form doesn't actually work," +
+          'along with the others on this website, because Cloudflare handles it extremely poorly.' +
+          " So, if you want to get in touch with me, you've gotta email me at olav@olavorw.com."
+        }
+      />
+      <ContactForm />
+      <UnifiedSection
+        topOfPage={false}
+        rightAligned={true}
+        title={'Epic Cards'}
+        description={'Yeah, I called them epic cards. They are pretty epic.'}
+        content={
+          "These are some extremely stylish cards with a lot of functionality. They're designed to be" +
+          ' sleek and modern, with a lot of gradients and blur effects. Like most of this style They have a lot of dynamic features' +
+          ' like dropdowns and animations. They are also very functional, with a lot of information and links.'
+        }
+      />
+      <EpicCards
+        cards={[
+          {
+            title: 'Wow!',
+            description:
+              'This is a really cool card. It has a lot of features and looks amazing. I love it!',
+            linkText: 'Cool Website',
+            icon: <IdCardIcon />,
+            dropdownText: 'Click this thingy!',
+            linkHref: 'https://olavorw.com',
+            features: [
+              {
+                feature: 'Dynamic',
+                featureDescription: 'This whole card is dynamic.',
+                featureIcon: <BicepsFlexedIcon />,
+              },
+              {
+                feature: 'Icons',
+                featureDescription: 'Supports dynamic icons!',
+                featureIcon: <Brain />,
+              },
+              {
+                feature: 'Beautiful',
+                featureDescription: 'This card is beautiful.',
+                featureIcon: <Flower />,
+              },
+            ],
+          },
+          {
+            title: 'Amazing!',
+            description:
+              'This is another really cool card. It has a lot of features and looks amazing. I love it! Whoa, the last one had an icon but this one does not!',
+            linkText: 'Shh!',
+            icon: '',
+            dropdownText: 'Whoa!',
+            linkHref: 'https://olavorw.com',
+            features: [
+              {
+                feature: 'Hover',
+                featureDescription: 'Hover over this text..',
+                featureIcon: <Mouse />,
+              },
+              {
+                feature: '',
+                featureDescription: 'Again, no stuff because dynamic!',
+                featureIcon: <Brain />,
+              },
+              {
+                feature: 'No icon',
+                featureDescription: 'I just chose for no icon.',
+              },
+              {
+                feature: 'Beautiful',
+                featureDescription: 'This card is beautiful. (again)',
+                featureIcon: <Flower />,
+              },
+            ],
+          },
+          {
+            title: 'Card?',
+            description:
+              'This is the last card. It has a lot of features and looks amazing. I love it!',
+            icon: 'Bet you thought there was an icon!',
+            dropdownText: 'Click this thingy!',
+            features: [
+              {
+                feature: 'rah',
+                featureDescription: 'Bet you thought there would be a link!',
+                featureIcon: <Angry />,
+              },
+              {
+                feature: '',
+                featureDescription: 'Nothing on the left side!',
+              },
+              {
+                feature: 'Nothing on the right side!',
+                featureDescription: '',
+                featureIcon: <Cog />,
+              },
+            ],
+          },
+        ]}
       />
     </>
   );
