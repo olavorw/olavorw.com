@@ -40,9 +40,9 @@ const Card: React.FC<CardProps> = ({
   title,
   description,
   icon,
-  linkText = 'Link',
+  linkText,
   linkHref = '#',
-  dropdownText = 'Learn more',
+  dropdownText,
   features = [],
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -77,26 +77,30 @@ const Card: React.FC<CardProps> = ({
         <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
         <p className="mb-4 text-slate-300 ">{description}</p>
         <div className="flex items-center justify-between">
-          <motion.button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="group inline-flex items-center text-sm transition duration-300 ease-out font-semibold hover:bg-gradient-to-r from-[#6717cd] to-[#2871fa] hover:text-transparent bg-clip-text"
-            whileHover={{ scale: 1.05 }}
-          >
-            {dropdownText}
-            <ChevronDown
-              className={`ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:text-[#2871fa] ${isExpanded ? 'rotate-180' : ''}`}
-            />
-          </motion.button>
-          <motion.a
-            href={linkHref}
-            className="group inline-flex items-center text-sm transition duration-300 ease-out font-semibold hover:bg-gradient-to-r from-[#6717cd] to-[#2871fa] hover:text-transparent bg-clip-text"
-            whileHover={{ scale: 1.05 }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ExternalLink className="h-4 w-4 mr-1 transition duration-300 ease-out group-hover:text-[#6717cd]" />
-            {linkText}
-          </motion.a>
+          {dropdownText && (
+            <motion.button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="group inline-flex items-center text-sm transition duration-300 ease-out font-semibold hover:bg-gradient-to-r from-[#6717cd] to-[#2871fa] hover:text-transparent bg-clip-text"
+              whileHover={{ scale: 1.05 }}
+            >
+              {dropdownText}
+              <ChevronDown
+                className={`ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:text-[#2871fa] ${isExpanded ? 'rotate-180' : ''}`}
+              />
+            </motion.button>
+          )}
+          {linkText && (
+            <motion.a
+              href={linkHref}
+              className="group inline-flex items-center text-sm transition duration-300 ease-out font-semibold hover:bg-gradient-to-r from-[#6717cd] to-[#2871fa] hover:text-transparent bg-clip-text"
+              whileHover={{ scale: 1.05 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ExternalLink className="h-4 w-4 mr-1 transition duration-300 ease-out group-hover:text-[#6717cd]" />
+              {linkText}
+            </motion.a>
+          )}
         </div>
         <AnimatePresence>
           {isExpanded && (
