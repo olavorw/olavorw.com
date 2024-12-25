@@ -77,6 +77,7 @@ export default function WebComponents() {
         ]}
       />
       <UnifiedSection
+        tagline={'Style 1'}
         title={'olavorw.com Style'}
         content={
           'The components on this page are styled to match the style of my website, olavorw.com. I use a dark theme' +
