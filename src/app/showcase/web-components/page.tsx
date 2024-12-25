@@ -114,7 +114,6 @@ export default function WebComponents() {
       />
       <UnifiedSection
         topOfPage={false}
-        rightAligned={true}
         title={'Contact Form'}
         description={'A contact form component to get in touch with me'}
         content={
