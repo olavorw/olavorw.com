@@ -4,10 +4,8 @@ import Banner from '@/components/Banner';
 import ContactForm from '@/components/ContactForm';
 import EpicCards from '@/components/EpicCards';
 import {
-  Angry,
   BicepsFlexedIcon,
   Brain,
-  Cog,
   Flower,
   IdCardIcon,
   Mouse,
@@ -200,23 +198,6 @@ export default function WebComponents() {
             description:
               'This is the last card. It has a lot of features and looks amazing. I love it!',
             icon: 'Bet you thought there was an icon!',
-            dropdownText: 'Click this thingy!',
-            features: [
-              {
-                feature: 'rah',
-                featureDescription: 'Bet you thought there would be a link!',
-                featureIcon: <Angry />,
-              },
-              {
-                feature: '',
-                featureDescription: 'Nothing on the left side!',
-              },
-              {
-                feature: 'Nothing on the right side!',
-                featureDescription: '',
-                featureIcon: <Cog />,
-              },
-            ],
           },
         ]}
       />
