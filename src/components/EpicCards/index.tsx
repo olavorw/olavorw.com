@@ -74,7 +74,7 @@ const Card: React.FC<CardProps> = ({
         >
           {icon}
         </motion.div>
-        <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
+        <h3 className="mb-2 text-xl font-semibold text-white">{title}</h3>
         <p className="mb-4 text-slate-300 ">{description}</p>
         <div className="flex items-center justify-between">
           {dropdownText && (
