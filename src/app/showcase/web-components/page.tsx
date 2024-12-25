@@ -48,7 +48,8 @@ export default function WebComponents() {
         additionalContent={
           "Not all components I've made are explicitly displayed on this page, as said before. While I'm extremely happy" +
           " of how the NavBar and Footer components, they're not shown here for the sake of having a more focused showcase, as you can see " +
-          'them by looking at the top or bottom of the page anyways.'
+          'them by looking at the top or bottom of the page anyways.\nAnother thing, I have a lot of components with different styles from' +
+          "different projects. I'll split this showcase up into some parts highlighting each style, the main two being olavorw.com and 4934.tech."
         }
         finalTitle={'Licensing'}
         finalContent={
@@ -76,10 +77,19 @@ export default function WebComponents() {
         ]}
       />
       <UnifiedSection
+        title={'olavorw.com Style'}
+        content={
+          'The components on this page are styled to match the style of my website, olavorw.com. I use a dark theme' +
+          ' with a purple accent color, and I use a lot of rounded corners and shadows. I also use a lot of gradients' +
+          ' and blur effects to make the components look sleek and modern. Lots of animations as well'
+        }
+        centered={true}
+        topOfPage={false}
+      />
+      <UnifiedSection
         topOfPage={false}
         rightAligned={true}
         title={'Banner'}
-        tagline={'Web Component'}
         description={'A banner component to display important information'}
       />
       <Banner
