@@ -86,7 +86,7 @@ export default function WebComponents() {
         mainTitle={"Olav's wonderful website."}
         subtitle={'I\'m Olav "Olavorw" Sharma. I do cool nerdy stuff. '}
         buttonText={'About Me'}
-        buttonHref={'https://olavorw.com/about'}
+        buttonHref={'https://olavorw.com/aboutme'}
         showCased={true}
       />
     </>
