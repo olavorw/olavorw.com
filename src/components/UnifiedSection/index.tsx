@@ -46,6 +46,7 @@ interface UnifiedSectionProps {
   boldTitle?: boolean;
   stats?: Array<{ name: string; value: string }>;
   links?: Array<{ name: string; href: string }>;
+  textCentered?: boolean;
 }
 
 const baseClasses = 'transition-all duration-300 ease-in-out';
@@ -77,15 +78,18 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
   boldTitle = true,
   stats = [],
   links = [],
+  textCentered = false,
 }) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
-  const alignmentClass = rightAligned
-    ? 'lg:ml-auto text-right'
-    : centered
-      ? 'mx-auto text-center'
-      : '';
+  const alignmentClass = textCentered
+    ? 'mx-auto text-center'
+    : rightAligned
+      ? 'lg:ml-auto text-right'
+      : centered
+        ? 'mx-auto'
+        : '';
 
   return (
     <motion.div
@@ -161,11 +165,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
             </motion.div>
             <motion.div
               className={`${
-                centered
-                  ? 'text-center'
-                  : rightAligned
-                    ? 'text-right'
-                    : 'max-w-xl lg:max-w-lg'
+                textCentered ? 'text-center' : rightAligned ? 'text-right' : ''
               } text-lg text-pretty text-slate-300`}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -187,7 +187,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
               {features.length > 0 && (
                 <ul
                   role="list"
-                  className={`${content ? 'mt-8' : ''} space-y-8 text-pretty text-slate-400 ${centered || rightAligned ? 'inline-block text-left' : ''}`}
+                  className={`${content ? 'mt-8' : ''} space-y-8 text-pretty text-slate-400 ${textCentered ? 'inline-block text-left' : ''}`}
                 >
                   {features.map((feature, index) => (
                     <motion.li
@@ -261,7 +261,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
             </motion.div>
             {links.length > 0 && (
               <motion.div
-                className={`mt-10 flex items-center gap-x-6 ${centered ? 'justify-center' : rightAligned ? 'justify-end' : ''}`}
+                className={`mt-10 flex items-center gap-x-6 ${textCentered ? 'justify-center' : rightAligned ? 'justify-end' : ''}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
@@ -294,7 +294,7 @@ const UnifiedSection: FC<UnifiedSectionProps> = ({
             )}
             {stats.length > 0 && (
               <motion.dl
-                className={`mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 ${centered || rightAligned ? 'lg:grid-cols-4' : ''}`}
+                className={`mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 ${textCentered || centered || rightAligned ? 'lg:grid-cols-4' : ''}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={
                   isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
