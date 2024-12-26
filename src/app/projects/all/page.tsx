@@ -17,7 +17,8 @@ export default function AllProjects() {
       <UnifiedSection
         title={'Projects'}
         description={
-          'These are all of my major projects, as cards! This page is currently under construction. Check back later for updates!'
+          'These are all of my major projects, as cards! This page is currently under construction.' +
+          ' Check back later for updates!'
         }
         centered={true}
         tagline={'All Projects'}
