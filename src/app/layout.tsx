@@ -7,8 +7,6 @@ import NavBar from '@/features/NavBar/components';
 import DynamicBackground from '../features/CyberBackground/components';
 import Footer from '@/features/Footer/components';
 import React from 'react';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 {
   /* import Banner from "@/components/Banner"; */
@@ -115,8 +113,6 @@ export default function RootLayout({
         */}
         <DynamicBackground />
         <main className="flex-grow pt-16 z-10 relative">{children}</main>
-        <Analytics />
-        <SpeedInsights />
         <Footer />
       </body>
     </html>
