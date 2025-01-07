@@ -61,9 +61,6 @@ export const metadata: Metadata = {
     'Startup',
     'Founder',
   ],
-  icons: {
-    icon: [{ url: '/favicon.ico?v=1.1', sizes: '32x32' }],
-  },
   openGraph: {
     title: "Olav's wonderful website.",
     description:
