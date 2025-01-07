@@ -6,6 +6,7 @@ export default function AboutMe() {
   return (
     <>
       <UnifiedSection
+        centered={true}
         title={"Yo, I'm Olav!"}
         tagline={'About me'}
         description={"I'm a massive software & hardware nerd."}
