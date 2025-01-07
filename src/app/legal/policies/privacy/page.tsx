@@ -268,7 +268,15 @@ export default function PrivacyPolicy() {
       <UnifiedSection
         centered={true}
         topOfPage={false}
-        description={'Thank you for being a part of the community!'}
+        description={
+          'For more information about our policies, visit the source code repository for this website.'
+        }
+        links={[
+          {
+            name: 'GitHub',
+            href: 'https://github.com/olavorw/olavorw.com',
+          },
+        ]}
       />
     </>
   );
