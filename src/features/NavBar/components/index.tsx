@@ -388,28 +388,28 @@ function MobileMenu({
                     </div>
                     <div className="relative mt-6 flex-1 px-6">
                       <div className="space-y-4">
-                        <DisclosureMenu label="Solutions" items={col1WithCTA} />
+                        <DisclosureMenu label="Projects" items={col1WithCTA} />
                         <motion.a
-                          href="#"
+                          href="https://lab.olavorw.com"
                           className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          Gallery
+                          Lab
                         </motion.a>
                         <DisclosureMenu
-                          label="Hackathons"
+                          label="About Me"
                           items={col2WithCTA}
                         />
                         <motion.a
-                          href="#"
+                          href="https://docs.olavorw.com"
                           className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          About
+                          Documentation
                         </motion.a>
-                        <DisclosureMenu label="Projects" items={col3WithCTA} />
+                        <DisclosureMenu label="Showcase" items={col3WithCTA} />
                       </div>
                     </div>
                     <div className="border-t border-slate-400/50 px-6 py-6">

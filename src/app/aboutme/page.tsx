@@ -1,5 +1,5 @@
 import UnifiedSection from '@/components/UnifiedSection';
-import { Code, Lock, Pen } from 'lucide-react';
+import { Code, Lock, Pen, Languages } from 'lucide-react';
 import { ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
 export default function AboutMe() {
@@ -40,6 +40,12 @@ export default function AboutMe() {
             title: 'Software Development',
             description:
               'I love developing software, it allows me to create cool stuff, especially malware',
+          },
+          {
+            icon: <Languages />,
+            title: '日本語',
+            description:
+              'Priority right here',
           },
         ]}
         additionalContent={
