@@ -49,13 +49,13 @@ export default function HomeHero() {
               className="relative rounded-full px-3 py-1 text-sm/6 text-slate-300 ring-1 ring-white/10 hover:ring-white/20"
               whileHover={{ scale: 1.05 }}
             >
-              Pioneering open source.{' '}
+              Currently working on{' '}
               <a
-                href="https://olavorw.com/aboutme"
+                href="https://github.com/olavorw/mat3rialized-dots"
                 className={`${baseClasses} font-semibold text-transparent bg-gradient-to-r from-[#6717cd] to-[#2871fa] bg-clip-text`}
                 style={glowStyle}
               >
-                About me <span aria-hidden="true">→</span>
+                Arch linux dots <span aria-hidden="true">→</span>
               </a>
             </motion.div>
           </motion.div>
@@ -105,10 +105,8 @@ export default function HomeHero() {
               className="text-pretty text-xl/8 font-medium text-slate-300 sm:text-xl/8"
               whileHover={{ scale: 1.02 }}
             >
-              Hello World, I&apos;m Olav, a full stack software developer,
-              hardware enthusiast, entrepreneur, and founder of 4934 Tech. You
-              might know me as &quot;Olavorw&quot;. I am a pioneer of the open
-              source community. I will help build the future!
+              Hi, I&apos;m Olav, I do software, hardware, and everything in
+              between. also on arch linux btw
             </motion.p>
 
             <motion.div
@@ -118,7 +116,7 @@ export default function HomeHero() {
               transition={{ delay: 0.6, duration: 0.5 }}
             >
               <motion.a
-                href="https://olavorw.com/cta/letsbuild"
+                href="https://olavorw.com/projects"
                 className={`${baseClasses} ${hoverClasses} rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white`}
                 whileHover={{
                   scale: 1.05,
@@ -127,15 +125,15 @@ export default function HomeHero() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Let&apos;s Build
+                Explore Projects
               </motion.a>
 
               <motion.a
-                href="https://olavorw.com/projects"
+                href="https://olavorw.com/contact"
                 className={`${baseClasses} ${hoverClasses} group flex items-center gap-x-2 text-sm/6 font-semibold text-white`}
                 whileHover={{ scale: 1.05, x: 5 }}
               >
-                <span className={`${textHoverClasses}`}>Explore Projects</span>
+                <span className={`${textHoverClasses}`}>Contact Me</span>
                 <ArrowRight
                   className={`group-hover:text-[#2871fa] size-4 transition-transform duration-300 ease-out group-hover:translate-x-1`}
                 />

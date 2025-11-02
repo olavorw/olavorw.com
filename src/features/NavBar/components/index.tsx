@@ -397,10 +397,7 @@ function MobileMenu({
                         >
                           Lab
                         </motion.a>
-                        <DisclosureMenu
-                          label="About Me"
-                          items={col2WithCTA}
-                        />
+                        <DisclosureMenu label="About Me" items={col2WithCTA} />
                         <motion.a
                           href="https://docs.olavorw.com"
                           className={`${baseClasses} ${hoverClasses} block rounded-lg py-2 text-base/7 font-semibold text-slate-400`}
@@ -640,11 +637,11 @@ export default function NavBar() {
           blur={blur}
         />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <NavItem
-            label="Let's Build"
-            href="https://olavorw.com/cta/letsbuild"
-            hasArrow
-          />
+          {/*<NavItem*/}
+          {/*  label="Let's Build"*/}
+          {/*  href="https://olavorw.com/cta/letsbuild"*/}
+          {/*  hasArrow*/}
+          {/*/>*/}
         </div>
       </motion.nav>
       <AnimatePresence>

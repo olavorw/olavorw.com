@@ -220,7 +220,7 @@ export default function Footer() {
             transition={{ delay: 0.6, duration: 0.5 }}
           >
             <motion.a
-              href="https://olavorw.com/policies/copyright"
+              href="https://olavorw.com/legal/policies/copyright"
               className={`${baseClasses} ${hoverClasses} text-sm text-slate-400 hover:text-transparent`}
               style={glowStyle}
               whileHover={{ scale: 1.05 }}

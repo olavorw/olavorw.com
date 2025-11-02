@@ -11,7 +11,9 @@ export default function Contact() {
           "I'd love to hear from you! If the form doesn't seem to work, email me at olav@olavorw.com"
         }
       />
-      <ContactForm />
+      <div className="mb-10">
+        <ContactForm />
+      </div>
     </>
   );
 }
